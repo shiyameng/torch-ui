@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv=pragma content=no-cache>
+<meta http-equiv=cache-control content=no-cache>
+<meta http-equiv=expires content=0>
+</head>
+<body>
+	<div name="tab" ng-controller="SetupController as vm">
+		<ul class="nav nav-tabs tab-bg">
+			<li role="presentation" ng-class="{true: 'active', false: ''}[brand]">
+				<div class="top-banner"></div>
+				<a href="" ng-click="url('brand')" class="link">商标授权</a>
+			</li>
+			<li role="presentation" ng-class="{true: 'active', false: ''}[invest]">
+				<div class="top-banner"></div>
+				<a href="" ng-click="url('invest')" class="link">字号/投资授权</a>
+			</li>
+		</ul>
+		<div ng-view name="view" class="gap" onload="vm.loadView()"></div>
+	</div>
+
+	<script type="text/javascript" src="../../../../script/entry.js"></script>
+	<script type="text/javascript">
+		loadJs('./accredit.js');
+	</script>
+</body>
+</html>

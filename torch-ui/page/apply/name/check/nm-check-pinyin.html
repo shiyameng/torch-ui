@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv=pragma content=no-cache>
+<meta http-equiv=cache-control content=no-cache>
+<meta http-equiv=expires content=0>
+</head>
+<body>
+<!-- begin of main -->
+<div class="container" ng-controller="PinyinController as vm">
+	<ng-form name="pinyin" >
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>字号</th>
+					<th>拼音</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in vm.word">
+					<td><span ng-bind="item.text"></span></td>
+					<td>
+						<span ng-if="item.pinyin.length == 1" ng-bind="item.value"></span>
+						<radio ng-if="item.pinyin.length > 1" torch-dict name="{{'word' + $index}}" torch-dict-data="item.pinyin" data="item.value" ></radio>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</ng-form>
+	<div class="text-center form-group">
+        <button type="button" class="btn btn-primary" ng-click="vm.selectPinyin()">
+            <i class="glyphicon glyphicon-ok"></i><span > 确定</span>
+        </button>
+    </div>
+</div>
+<script type="text/javascript" src="../../../../script/entry.js"></script>
+<script type="text/javascript">
+	loadJs('./nm-check-pinyin.js');
+</script>
+</body>
+</html>

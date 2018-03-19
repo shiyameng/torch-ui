@@ -1,0 +1,190 @@
+<div ng-controller="nmController as vm">
+	<div class="panel panel-info">
+	  <div class="panel-heading">
+	    <h5 class="panel-title">
+	    	<span class="glyphicon glyphicon-list-alt"></span>&nbsp;原主体信息
+	    </h5>
+	  </div>
+	  <div class="panel-body">
+	  	<div class="row">
+	  		<div class="col-sm-2 text-right">
+	  			<p><i class="red">*</i> 企业名称：</p>
+	  		</div>
+	  		<div class="col-sm-3">
+	  			<p ng-bind="vm.nmDetail.entname"></p>
+	  		</div>
+	  		<div class="col-sm-2 text-right">
+	  			<p><i class="red">*</i> 统一社会信用代码/注册号：</p>
+	  		</div>
+	  		<div class="col-sm-3">
+	  			<p ng-bind="vm.nmDetail.regno"></p>
+	  		</div>
+	  	</div>
+	  	<div class="row">
+	  		<div class="col-sm-2 text-right">
+	  			<p><i class="red">*</i> 企业类型：</p>
+	  		</div>
+	  		<div class="col-sm-3">
+	  			<p ng-bind="vm.nmDetail.enttype|dict:'CA16'"></p>
+	  		</div>
+	  		<div class="col-sm-2 text-right">
+	  			<p><i class="red">*</i> 成立日期：</p>
+	  		</div>
+	  		<div class="col-sm-3">
+	  			<p ng-bind="vm.nmDetail.estdate"></p>
+	  		</div>
+	  	</div>
+	  	<div class="row">
+	  		<div class="col-sm-2 text-right">
+	  			<p><i class="red">*</i> 企业状态：</p>
+	  		</div>
+	  		<div class="col-sm-3">
+	  			<p ng-bind="vm.nmDetail.opstate|dict:'CA19'"></p>
+	  		</div>
+	  		<div class="col-sm-2 text-right">
+	  			<p><i class="red">*</i> 注册资本：</p>
+	  		</div>
+	  		<div class="col-sm-3">
+	  			<p ng-bind="vm.nmDetail.regcap"></p>
+	  		</div>
+	  	</div>
+	  	<div class="row">
+	  		<div class="col-sm-2 text-right">
+	  			<p><i class="red">*</i> 住所：</p>
+	  		</div>
+	  		<div class="col-sm-8">
+	  			<p ng-bind="vm.nmDetail.dom"></p>
+	  		</div>
+	  	</div>
+	  </div>
+	</div>
+	<ng-form name="nmInfo" class="form-horizontal">
+		<!-- 企业类型 -->
+		<div class="form-group">
+			<div class="col-sm-2 text-right">
+				<i class="red">*</i> <label class="control-label" for="">企业类型：</label>
+			</div>
+			<div class="col-sm-8">
+				<div class="col-sm-12">
+					<select class="form-control" name="enttype" torch-dict="DFNM13" ng-model="vm.nmInfoForm.enttype" rule="must"></select>
+				</div>
+			</div>
+		</div>
+		<!-- 行政区划 -->
+		<div class="form-group">
+			<div class="col-sm-2 text-right">
+				<i class="red">*</i> <label class="control-label" for="">行政区划：</label>
+			</div>
+			<div class="col-sm-8">
+				<div class="col-sm-4"><p class="form-control-static">内蒙古自治区</p></div>
+				<div class="col-sm-8">
+					<div cascade data="vm.city"  
+					one="vm.nmInfoForm.namecity" two="vm.nmInfoForm.namecountry" ></div>
+				</div>
+			</div>
+		</div>
+		<!-- 字号  -->
+		<div class="form-group">
+			<div class="col-sm-2 text-right">
+				<i class="red">*</i> <label class="control-label" for="">字号：</label>
+			</div>
+			<div class="col-sm-8">
+				<div class="col-sm-12">
+					<input class="form-control" name="enttra" rule="must;length:0,20" ng-model="vm.nmInfoForm.enttra"/>
+				</div>
+			</div>
+		</div>
+		<!-- 行业表述 -->
+		<div class="form-group">
+			<div class="col-sm-2 text-right">
+				<i class="red">*</i> <label class="control-label" for="">行业表述：</label>
+			</div>
+			<div class="col-sm-8">
+				<div class="col-sm-10">
+					<input class="form-control" ng-model="vm.nmInfoForm.nameind" typeahead-min-length="0" rule="must;length:0,15"
+					 typeahead-on-select="vm.selectBusiness()" uib-typeahead="nameind for nameind in vm.queryBusiness($viewValue)">
+					<span ng-if="vm.nmInfoForm.industry">
+						<span ng-bind="vm.nmInfoForm.industry"></span>
+					</span>
+				</div>
+				<div class="col-sm-2">
+					<a class="pull-right" href="javascript:void(0);" ng-click="vm.addBusiness()"><u>选择主营业务</u></a>
+				</div>
+			</div>
+		</div>
+		<!-- 组织形式-->
+		<div class="form-group">
+			<div class="col-sm-2 text-right">
+				<i class="red">*</i> <label class="control-label" for="">组织形式：</label>
+			</div>
+			<div class="col-sm-8">
+				<div class="col-sm-12">
+					<input type="text" ng-model="vm.nmInfoForm.orgform" typeahead-min-length="0" rule="must;length:0,10"
+						 uib-typeahead="orgForm for orgForm in vm.orgForm | filter:$viewValue " class="form-control">
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-2 text-right">
+				<label class="control-label" for=""></label>
+			</div>
+			<div class="col-sm-8">
+				<div class="col-sm-12 bg-info">
+					<div class="gap">
+						<label class="radio-inline">
+							名称中所在行政区域划位置
+						</label>
+						<label class="radio-inline">
+							<input type="radio" ng-model="vm.position" name="position" value="before" ng-click="vm.setEntName()"/>前
+						</label>
+						<label class="radio-inline">
+							<input type="radio" ng-model="vm.position" name="position" value="middle" ng-click="vm.setEntName()"/>中
+						</label>
+						<label class="radio-inline">
+							<input type="radio" ng-model="vm.position" name="position" value="after" ng-click="vm.setEntName()"/>后
+						</label>
+						<div class="pull-right">
+							<a class="btn underline" ng-click="vm.authorityInfo()">填写授权信息</a>
+						</div>
+						<!-- //商标授权和字号授权信息 -->
+					</div>
+					<table class="table table-edit gap" ng-if="vm.accreditList.length > 0">
+                        <tbody>
+							<tr ng-repeat="item in vm.accreditList">
+								<td class="col-sm-5">
+									<span ng-bind="item.accreditetype|dict:'DFNM02'"></span>
+								</td>
+								<td class="col-sm-5">
+									<span ng-bind="item.entname || item.brandname"></span>
+								</td>								
+								<td><a href="javascript:void(0)" class="glyphicon glyphicon-remove" ng-click="vm.delAuthority($index)"></a></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="gap">
+						<p>根据您输入的信息生成的名称如下：</p>												
+						<div ng-if="vm.nmInfoForm.entname" class="clearfix">
+						    <h4 class="solid-line text-info" ng-bind="vm.nmInfoForm.entname"></h4> 
+							<div class="pull-right">
+  								<label class="radio-inline">
+    								<input type="radio" name="city" id="city" value="city">
+  									本市
+ 								</label>
+ 								<label class="radio-inline">
+    								<input type="radio" name="province" id="province" value="province">
+  									全省
+ 								</label>
+								<div class="btn btn-primary btn-sm" ng-click="vm.checkPinyin()">检查是否可用</div>	
+							</div>					
+						</div>
+					</div>
+					<div class="gap"></div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group text-center" ng-if="vm.checkResult">
+			<div class="btn btn-primary" ng-click="vm.save()">下一步</div>
+		</div>
+	</ng-form>
+	
+</div>

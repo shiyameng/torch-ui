@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv=pragma content=no-cache>
+<meta http-equiv=cache-control content=no-cache>
+<meta http-equiv=expires content=0>
+<link rel="stylesheet" href="../../../../style/css/approve/company/setup/setup.css"/>
+</head>
+<body>
+	<div name="tab" ng-controller="SetupController as vm">
+		<uib-tabset active="0" class="tab-sm">
+			<uib-tab index="0" disable=true >
+	      		<uib-tab-heading>企业设立－网上审查</uib-tab-heading>
+	      	</uib-tab>
+	    </uib-tabset>
+	    <div class="tab-sm-content">
+
+			<!-- begin of main -->
+			<ng-form name="apply" action="" class="form-horizontal">
+				<uib-accordion close-others="oneAtATime">
+					<!-- 模块2 名称信息-->
+					<div uib-accordion-group class="panel-info module2" is-open="true">
+						<uib-accordion-heading>
+							<i class="glyphicon glyphicon-file"></i>名称信息
+						</uib-accordion-heading>
+						<div class="row">
+							<div class="col-sm-2 text-right">
+								<label>企业名称：</label>
+							</div>
+							<div class="col-sm-5">
+								<span ng-bind="vm.entNameForm.entname"></span> <a ng-click="vm.detail()" class="cursorPointer">详情</a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-2 text-right">
+								<label>行业门类：</label>
+							</div>
+							<div class="col-sm-3">
+								<span ng-bind="vm.entNameForm.industryphy | dict:'CA05'"></span>
+							</div>
+							<div class="col-sm-2 text-right">
+								<label>行业代码：</label>
+							</div>
+							<div class="col-sm-5">
+								<span ng-bind="vm.entNameForm.industryco | dict:'CA06'"></span>
+							</div>
+						</div>
+					</div>
+
+					<!-- 模块3 基本信息-->
+					<div uib-accordion-group class="panel-info module3" is-open="true">
+						<uib-accordion-heading> <i
+								class="glyphicon glyphicon-file"></i>基本信息 </uib-accordion-heading>
+						<div class=" form-group">
+							<div class="col-sm-2 text-right">
+								<p>经营期限：</p>
+							</div>
+							<div class=" col-sm-8">
+								<p>
+									<span ng-bind="vm.entBasicForm.tradeterm"></span>年
+								</p>
+							</div>
+						</div>
+						<div class=" form-group">
+							<div class="col-sm-2 text-right">
+								<p>住所：</p>
+							</div>
+							<div class="col-sm-8">
+								<p ng-bind="vm.entBasicForm.domprov"></p>
+							</div>
+						</div>
+						<div class=" form-group">
+							<div class="col-sm-2 text-right">
+								<label class="control-label">经营范围：</label>
+							</div>
+							<div range-select data="vm.rangeData" value='value' class="col-sm-8"></div>
+							<span class="more" ng-click="vm.auxiliary()">更多</span>
+						</div>
+						<div class=" form-group">
+							<div class="col-sm-2 text-right">
+								<label class="control-label">许可信息：</label>
+							</div>
+							<div class="col-sm-8">
+								<!-- 许可信息 内容-->
+								<table class="table table-hover">
+									<tr ng-repeat="permission in vm.entLicList">
+										<!--前置后置类型-->
+										<td ng-bind="permission.lictype | dict:'DFCP08'"></td>
+										<!-- 许可文件名称-->
+										<td ng-hide="permission.lictype == 2" ng-bind="permission.licname | dict:'DFCM01'"></td>
+										<td ng-show="permission.lictype == 2" ng-bind="permission.licmettermemo"></td>
+										<!-- 许可机关-->
+										<td ng-hide="permission.lictype == 2" ng-bind="permission.licanth | dict:'CA25'"></td>
+										<td ng-show="permission.lictype == 2" ng-bind="permission.licanth"></td>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<!-- 模块4 股东-->
+					<div uib-accordion-group class="panel-info module4" is-open="true">
+						<uib-accordion-heading> <i
+								class="glyphicon glyphicon-file"></i>股东（点击可维护股东信息） </uib-accordion-heading>
+						<div class="module4Container">
+							<div class="shareholderName">
+								<ul>
+									<li class="col-sm-3" ng-repeat="information in vm.InvList">
+										<div ng-click="vm.invDetails(information.invid)" style="height:67px;"
+											 ng-class="{true: 'edit-personnel-style', false: ''}[information.modifysign !== '2']">
+											<span ng-bind="information.inv"
+												  class="displayBlock" style="height:30px;"></span>
+											<p class="text-right"  style="height:25px;">
+												<span class="label label-primary" ng-if="information.modifysign == '2'">出资: {{information.subconam}} 万</span>
+												<span class="label label-success" ng-if="information.modifysign !== '2'">出资: {{information.subconam}} 万</span>
+											</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="companyName">
+								<ul>
+									<li class="col-sm-6" ng-repeat="information in vm.entInvList">
+										<div ng-click="vm.entInvDetails(information.invid)" style="height:67px;"
+											 ng-class="{true: 'edit-personnel-style', false: ''}[information.modifysign !== '2']">
+											<span class="labelName" style="height:30px;" ng-bind="information.inv" ></span>
+											<p class="text-right" style="height:25px;">
+												<span class="label label-primary" ng-if="information.modifysign == '2'">出资: {{information.subconam}}万</span>
+												<span class="label label-success" ng-if="information.modifysign !== '2'">出资: {{information.subconam}}万</span>
+											</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="capitalSum">
+								<div class="col-sm-6 text-left">
+									注册资本(等于个股东出资之和) :
+									<span ng-bind="vm.invConSumForm.consum"></span>
+									万
+								</div>
+								<div class="col-sm-6 text-right">
+									<a href="" ng-click="vm.proportion()">显示股东占比</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 模块5 主要人员-->
+					<div uib-accordion-group class="panel-info module5" is-open="true">
+						<uib-accordion-heading>
+							<i class="glyphicon glyphicon-file"></i>主要人员
+						</uib-accordion-heading>
+						<div class="module5Container">
+
+							<div ng-repeat="directorList in vm.entMemList track by $index" style="border-bottom: 1px solid #E6E6E6 ; padding-bottom:5px">
+								<div class="row">
+									<h5 style="color:#31b0d5;">
+										<span ng-hide="directorList.lerepsign == 0 || !directorList.lerepsign" class="red glyphicon glyphicon-star"></span>
+										<span ng-show="directorList.lerepsign == 0 || !directorList.lerepsign" style="padding:9px"></span>
+										<i class="icon-user"></i>
+										<b><span ng-bind="directorList.name"></span></b>
+										&nbsp;&nbsp;
+										<span ng-bind="directorList.sex | dict:'CB17'"></span>
+										&nbsp;&nbsp;
+										<span> 居民身份证（<span ng-bind="directorList.cerno"></span>）</span>
+										<button
+												type="button"
+												class="btn btn-primary btn-sm pull-right"
+												style="margin:0 5px"
+												ng-click="vm.memberDetails(directorList.personid)">详情
+										</button>
+									</h5>
+								</div>
+								<div style="padding-left:20px;color:#7C7C7C" ng-repeat="position in directorList.positions track by $index" >
+									<span>职务：<span ng-bind="position.position | dict:'CB18'"></span></span>
+									&nbsp;&nbsp;
+									<span>产生方式：<span ng-bind="position.posbrform | dict:'CB19'"></span></span>
+									&nbsp;&nbsp;
+									<span>任职期限：<span ng-bind="position.offyear"></span>年</span>
+								</div>
+							</div>
+
+							<!--分页-->
+							<div ng-if=" vm.directorList._paging.pageSize < vm.directorList._paging.total" class="text-center" style="margin-top:10px;">
+								<grid-paging page='vm.directorList._paging' change='vm.changeNum(vm.directorList._paging)'></grid-paging>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- 模块6 其他人员-->
+					<div uib-accordion-group class="panel-info module4" is-open="true">
+						<uib-accordion-heading> <i
+								class="glyphicon glyphicon-file"></i>其他人员
+						</uib-accordion-heading>
+
+						<div class="module4Container">
+							<div class="shareholderName">
+								<ul>
+									<li class="col-sm-3" ng-repeat="contact in vm.entContactList._data">
+										<!-- contact.linkman 如果为空添加class样式进行区分 -->
+										<div ng-click="vm.cpFinance(contact)" style="height:67px;"
+											 ng-class="{true: 'edit-personnel-style', false: ''}[!contact.linkman]">
+											<span class="displayBlock" style="height:30px;" ng-show="contact.linktype == 0">企业联系人</span>
+											<span class="displayBlock" style="height:30px;" ng-show="contact.linktype == 1">财务联系人</span>
+											<p class="text-right" style="height:25px;">
+												<span class="label label-primary" ng-if="contact.linkman" ng-bind="contact.linkman"></span>
+												<span class="label label-success" ng-if="!contact.linkman"><i class="glyphicon glyphicon-plus"></i></span>
+											</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</uib-accordion>
+
+				<div class="center-inline">
+					<div class="btn btn-primary" ng-click="vm.saveSetup()">
+						<span class="glyphicon glyphicon-saved" aria-hidden="true"></span>保存
+					</div>
+					&nbsp;&nbsp;
+					<button type="button" class="btn btn-success" ng-click="vm.opinion()">
+						<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 审批意见
+					</button>
+				</div>
+			</ng-form>
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src="../../../../script/entry.js"></script>
+	<script type="text/javascript">
+		loadJs('./cp-1100-setup.js');
+	</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv=pragma content=no-cache>
+<meta http-equiv=cache-control content=no-cache>
+<meta http-equiv=expires content=0>
+<script type="text/javascript" src="../../../../script/entry.js"></script>
+<script type="text/javascript">
+	loadJs('./nm-info-result.js');
+</script>
+</head>
+<body>
+<!-- begin of main -->
+<div class="container" ng-controller="resultController as vm">
+	<h4>禁用字</h4>
+	<table class="table">
+		<thead>
+			<th>序号</th>
+			<th></th>
+			<th>禁用字</th>
+			<th>文字拼音</th>
+			<th>拼音锁定</th>
+			<th>禁用行业(合并码)</th>
+		</thead>
+		<tbody>
+			<tr class="form-control" ng-repeat="item in items"></tr>
+		</tbody>
+	</table>
+	
+	<h4>知名企业</h4>
+	<table class="table">
+		<thead>
+			<th>序号</th>
+			<th></th>
+			<th>企业名称</th>
+			<th>字号</th>
+			<th>字号拼音</th>
+			<th>拼音锁定</th>
+			<th>批准机关</th>
+		</thead>
+		<tbody>
+			<tr class="form-control" ng-repeat="item in items"></tr>
+		</tbody>
+	</table>
+	
+	<h4>驰名商标</h4>
+	<table class="table">
+		<thead>
+			<th>序号</th>
+			<th></th>
+			<th>商标名称</th>
+			<th>商标注册人</th>
+			<th>商标字号拼音</th>
+			<th>拼音锁定</th>
+			<th>保护行业(行业合并码)</th>
+			<th>商标标志</th>
+			<th>批准机关</th>
+		</thead>
+		<tbody>
+			<tr class="form-control" ng-repeat="item in items"></tr>
+		</tbody>
+	</table>
+	
+	<h4>名称查重</h4>
+	<table class="table">
+		<thead>
+			<th>序号</th>
+			<th></th>
+			<th>注册号</th>
+			<th>企业名称</th>
+			<th>字号</th>
+			<th>行业表述</th>
+			<th>行业代码</th>
+			<th>重名行业(合并码)</th>
+			<th>名称状态</th>
+			<th>名称类型</th>
+			<th>查重类别</th>
+		</thead>
+		<tbody>
+			<tr class="form-control" ng-repeat="item in items"></tr>
+		</tbody>
+	</table>
+	
+	<h4>名称相似对比</h4>
+	<table class="table">
+		<thead>
+			<th>序号</th>
+			<th>注册号</th>
+			<th>企业名称</th>
+			<th>字号</th>
+			<th>行业表述</th>
+			<th>行业代码</th>
+			<th>重名行业(合并码)</th>
+			<th>名称状态</th>
+			<th>名称类型</th>
+		</thead>
+		<tbody>
+			<tr class="form-control" ng-repeat="item in items"></tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

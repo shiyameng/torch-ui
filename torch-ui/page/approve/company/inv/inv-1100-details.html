@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv=pragma content=no-cache>
+<meta http-equiv=cache-control content=no-cache>
+<meta http-equiv=expires content=0>
+</head>
+<body>
+	<!-- begin of main -->
+	<div class="container-fluid" ng-controller="SetupController as vm">
+	<ng-form class="form-horizontal" name="invEdit">
+		<div class="form-group ">
+			<div class="col-sm-2 text-right">
+				<p>姓名：</p>
+			</div>
+			<div class="col-sm-3">
+				<p ng-bind="vm.personForm.inv"></p>
+			</div>
+
+			<div class="col-sm-2 text-right">
+				<p>性别：</p>
+			</div>
+			<div class="col-sm-3">
+				<p ng-bind="vm.personForm.sex | dict:'CB17'"></p>
+			</div>
+		</div>
+		<div class="form-group ">
+			<div class="col-sm-2 text-right ">
+				<p>证件类型：</p>
+			</div>
+			<div class="col-sm-3">
+				<p ng-bind="vm.personForm.certype | dict:'CB16'"></p>
+			</div>
+			<div class="col-sm-2 text-right">
+				<p>证件号码：</p>
+			</div>
+			<div class="col-sm-3">
+				<p ng-bind="vm.personForm.cerno"></p>
+			</div>
+
+		</div>
+		<!-- 民族和国籍  -->
+		<div class="form-group ">
+			<div class="col-sm-2 text-right">
+				<p>民族：</p>
+			</div>
+			<div class="col-sm-3">
+				<p ng-bind="vm.personForm.nation | dict:'CB32'"></p>
+			</div>
+			<div class="col-sm-2 text-right">
+				<p>国籍：</p>
+			</div>
+			<div class="col-sm-3">
+				<p ng-bind="vm.personForm.country | dict:'CA02'"></p>
+			</div>
+		</div>
+
+		<div class="form-group ">
+			<div class="col-sm-2 text-right">
+				<p>股东类型：</p>
+			</div>
+			<div class="col-sm-3">
+				<p ng-bind="vm.personForm.invtype | dict:'DFCP2401'"></p>
+			</div>
+			<div class="col-sm-2 text-right">
+				<p>户籍登记地址：</p>
+			</div>
+			<div class="col-sm-3">
+				<p ng-bind="vm.personForm.dom"></p>
+			</div>
+		</div>
+		</ng-form>
+		
+		<!-- 表格 -->
+		<table name="invUpdate_Grid_2" class="table table-edit table-bordered table-striped small-gap">
+			<thead>
+				<tr>
+					<th style="width:30%;">出资额(万元)</th>
+					<th style="width:30%;">出资方式</th>
+					<th style="width:30%;">出资时间</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="info in vm.capitalList">
+					<!-- 出资额 -->
+					<td ng-bind="info.cursubconam"></td>
+					<!-- 出资方式 -->
+					<td ng-bind="info.conform | dict:'CA22'"></td>
+					<!-- 出资时间 -->
+					<td ng-bind="info.condate"></td>
+				</tr>
+			</tbody>
+		</table>
+		<div>
+			<span>出资总额：<span ng-bind="vm.capitalList|sumOfItems:'cursubconam'"></span>万(币种：人民币)</span>
+		</div>
+		<!-- 保存按钮 -->
+		<div class="text-center gap">
+			<div class="btn btn-primary" ng-click="vm.determine()">
+				<span class="glyphicon glyphicon-saved" aria-hidden="true"></span>确定
+			</div>
+		</div>
+	</div>
+	<!-- end of main -->
+
+	<script type="text/javascript" src="../../../../script/entry.js"></script>
+	<script type="text/javascript">
+		loadJs('./inv-1100-details.js');
+	</script>
+</body>
+</html>

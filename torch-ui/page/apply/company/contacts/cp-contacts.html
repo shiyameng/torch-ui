@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv=pragma content=no-cache>
+    <meta http-equiv=cache-control content=no-cache>
+    <meta http-equiv=expires content=0>
+    <link rel="stylesheet" href="../../../../style/css/approve/company/setup/setup.css"/>
+</head>
+<body>
+<!-- begin of main -->
+<div class="container-fluid" ng-controller="contactsController as vm">
+    <ng-form class="form-horizontal" name="cpEdit">
+        <div class="form-group ">
+            <div class="col-sm-4 col-xs-4 text-right">
+                <i class="red">*</i>
+                <label class="control-label" for="">姓名：</label>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <input class="form-control" ng-model="vm.cpContacts.linkman" ng-value="vm.cpContacts.linkman" rule="must;character">
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <div class="col-sm-4 col-xs-4  text-right">
+                <i class="red">*</i>
+                <label for="" class="control-label">证件类型：</label>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <select class="form-control" ng-change="vm.certype()"  name="a" id="" torch-dict="CB16" ng-value="vm.cpContacts.certype" ng-model="vm.cpContacts.certype" rule="must"></select>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <div class="col-sm-4 col-xs-4 text-right">
+                <i class="red">*</i>
+                <label class="control-label" for="">证件号码：</label>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <input class="form-control" id="cerno" ng-model="vm.cpContacts.cerno" ng-value="vm.cpContacts.cerno" rule="must;idcard">
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <div class="col-sm-4 col-xs-4 text-right">
+                <i class="red">*</i>
+                <label class="control-label" for="">移动电话：</label>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <input class="form-control" ng-model="vm.cpContacts.mobtel" ng-value="vm.cpContacts.mobtel" rule="mobile;must">
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <div class="col-sm-4 col-xs-4 text-right">
+                <i class="red">*</i>
+                <label class="control-label" for="">固定电话：</label>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <input class="form-control" ng-model="vm.cpContacts.tel" ng-value="vm.cpContacts.tel" rule="telephone;must">
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <div class="col-sm-4 col-xs-4 text-right">
+                <i class="red">*</i>
+                <label class="control-label" for="">电子邮件：</label>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <input class="form-control" ng-model="vm.cpContacts.email" ng-value="vm.cpContacts.email" rule="must;email">
+            </div>
+        </div>
+
+        <!--按钮-->
+        <div class="text-center gap">
+            <button type="button" class="btn btn-primary btn-sm" ng-click="vm.determine()">
+                <i class="glyphicon glyphicon-ok"></i><span> 确定</span>
+            </button>
+        </div>
+    </ng-form>
+</div>
+<!-- end of main -->
+
+<script type="text/javascript" src="../../../../script/entry.js"></script>
+<script type="text/javascript">
+    loadJs('./cp-contacts.js');
+</script>
+</body>
+</html>

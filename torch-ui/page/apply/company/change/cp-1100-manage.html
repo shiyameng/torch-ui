@@ -1,0 +1,140 @@
+<!-- begin of main -->
+<div ng-controller="manageController as vm">
+
+    <uib-accordion close-others="oneAtATime">
+        <div uib-accordion-group class="panel-info" is-open="true">
+            <uib-accordion-heading>
+                <i class="glyphicon glyphicon-file"></i>经办人信息
+            </uib-accordion-heading>
+            <ng-form class="form-horizontal" name="manageChange">
+                <!-- 经办人姓名和申请方式 -->
+                <div class="form-group ">
+                    <div class="col-sm-2 text-right">
+                        <i class="red">*</i> <label class="control-label">经办人姓名：</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="form-control" name="linkman" ng-model="vm.applyForm.linkman" rule="must;length:2,12;character">
+                    </div>
+                    <div class="col-sm-2 text-right">
+                        <i class="red">*</i> <label class="control-label">申请方式：</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <select class="form-control" name="appform" id="" torch-dict="CA90" ng-model="vm.applyForm.appform" rule="must">
+                            <option value ="">--请选择--</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- 证件类型和证件号码  -->
+                <div class="form-group ">
+                    <div class="col-sm-2 text-right">
+                        <i class="red">*</i> <label class="control-label">证件类型：</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <select class="form-control" ng-change="vm.certype()" name="certype" torch-dict="CB16" ng-model="vm.applyForm.certype"></select>
+                    </div>
+                    <div class="col-sm-2 text-right">
+                        <i class="red">*</i> <label class="control-label">证件号码：</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="form-control" id="cerno" name="cerno" ng-model="vm.applyForm.cerno" rule="must;idcard">
+                    </div>
+                </div>
+                <!-- 固定电话和移动电话 -->
+                <div class="form-group ">
+                    <div class="col-sm-2 text-right">
+                        <i class="red">*</i> <label class="control-label">固定电话：</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="form-control" name="tel" ng-model="vm.applyForm.tel" rule="must;telephone">
+                    </div>
+                    <div class="col-sm-2 text-right">
+                        <i class="red">*</i> <label class="control-label">移动电话：</label>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <input class="form-control" name="mobtel" ng-model="vm.applyForm.mobtel" rule="must;mobile">
+                    </div>
+                </div>
+            </ng-form>
+        </div>
+        <div uib-accordion-group class="panel-info" is-open="true">
+            <uib-accordion-heading>
+                <i class="glyphicon glyphicon-file"></i>待提交文书清单
+            </uib-accordion-heading>
+            <!-- 表格 -->
+            <div class="text-right">
+                <button id="addInfo" class="btn btn-primary btn-sm"
+                        ng-click="vm.addInfo()">
+                    继续添加</span>
+                </button>
+            </div>
+            <table name="inv" class="table table-bordered table-edit little-gap">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>材料名称</th>
+                    <th>原件/复印件</th>
+                    <th>份数</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="info in vm.applydocList.applydocs">
+                    <td><span>{{$index|pageIndex}}</span></td>
+                    <td>
+                        <input class="form-control" ng-model="info.docname" ng-value="info.docname" rule="must">
+                    </td>
+                    <td>
+                        <select class="form-control" torch-dict="DFCM03" ng-model="info.doctype" rule="must">
+                            <option value ="">请选择</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="info.doccnt" ng-value="info.doccnt" rule="must;contrast:1,4">
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" ng-click="vm.delInfo($index)">删除</button>
+                    </td>
+                </tr>
+                <tr class="text-center">
+                    <td ng-if="vm.applydocList.applydocs.length == 0" colspan="6" class="alert alert-warning" role="alert">
+                        暂无数据
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div uib-accordion-group class="panel-info module2" is-open="true">
+            <uib-accordion-heading>
+                <i class="glyphicon glyphicon-file"></i>选择企业类型
+            </uib-accordion-heading>
+            <ng-form class="form-horizontal">
+                <h5>
+                    <span>名称设立选择的企业类型为：{{vm.entTypeDetail.enttype | dict:'CA16'}}</span>
+                </h5>
+                <!--<div class="form-group ">-->
+                    <!--<div class="col-sm-6 text-right">-->
+                        <!--<i class="red">*</i> <label class="control-label" for="">清根据纸质材料,确定该企业的具体企业类型：</label>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-6">-->
+                        <!--<select class="form-control" name="a" id="" torch-dict="CA16"  ng-model="vm.entTypeForm.enttype" ng-value="vm.entTypeForm.enttype"></select>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </ng-form>
+        </div>
+    </uib-accordion>
+
+
+
+    <!-- 保存按钮 -->
+    <div class="center-inline">
+        <button class="btn btn-primary" ng-click="vm.saveInfo()">
+            <span class="glyphicon glyphicon-saved" aria-hidden="true"></span>保存
+        </button>
+        &nbsp;&nbsp;
+        <button class="btn btn-primary" ng-click="vm.nextStep()">
+            <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>下一步
+        </button>
+    </div>
+</div>
+<!-- end of main -->

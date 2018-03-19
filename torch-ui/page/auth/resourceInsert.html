@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv=pragma content=no-cache>
+	<meta http-equiv=cache-control content=no-cache>
+	<meta http-equiv=expires content=0>
+	<!--[if lt IE 9]>
+   		<script src="/../../../static/script/util/browser.js"></script>
+   	<![endif]-->
+	<script src="/../../../app/script/entry.js"></script>
+	    <script>
+		loadJs("./resourceInsertTorch.js"); 
+	    </script>
+</head>
+<body>
+			
+<div class="container" ng-controller="resourceInsertForm_Controller">
+	<form class="form-horizontal" name="resourceInsertForm_Form" novalidate>
+		  <div class="form-group">
+		     <label class="col-sm-3  control-label">上级资源id</label>
+			 <div class="col-sm-7" > <input type="text" class="form-control" name="pid" ng-model="resourceInsertForm.pid" rule="must"/></div>
+		  </div>
+		  <div class="form-group">
+		     <label class="col-sm-3  control-label">资源代码</label>
+			 <div class="col-sm-7" > <input type="text" class="form-control" name="rescode" ng-model="resourceInsertForm.rescode" rule="must"/></div>
+		  </div>
+		  <div class="form-group">
+		     <label class="col-sm-3  control-label">资源名称</label>
+			 <div class="col-sm-7" > <input type="text" class="form-control" name="resname" ng-model="resourceInsertForm.resname" rule="must"/></div>
+		  </div>
+		  <div class="form-group">
+		     <label class="col-sm-3  control-label">序号</label>
+			 <div class="col-sm-7" > <input type="text" class="form-control" name="ordernum" ng-model="resourceInsertForm.ordernum" rule="number;must"/></div>
+		  </div>
+		  <div class="form-group">
+		     <label class="col-sm-3  control-label">层级</label>
+			 <div class="col-sm-7" > <input type="text" class="form-control" name="layer" ng-model="resourceInsertForm.layer" rule="must"/></div>
+		  </div>
+		  <div class="form-group">
+		     <label class="col-sm-3  control-label">资源路径</label>
+			 <div class="col-sm-7" > <input type="text" class="form-control" name="resurl" ng-model="resourceInsertForm.resurl" rule="must"/></div>
+		  </div>
+		  <div class="form-group">
+		     <label class="col-sm-3  control-label">有效标志</label>
+<!-- 			 <div class="col-sm-7" > <input type="text" class="form-control" name="flag" ng-model="resourceInsertForm.flag" rule="must"/></div> -->
+			 	<div class="col-sm-7" >	<select class="form-control" name="flag" ng-model="resourceInsertForm.flag" rule="must">
+									  <option value ="1">有效</option>
+									  <option value ="0">无效</option>
+									</select></div>
+		  </div>
+		<div align="center">
+		<div class="form-group">
+		    <button class="btn btn-primary" ng-click="doSave()">提交</button>
+			<input class="btn btn-primary" type="reset" value="重置" />
+<!-- 			<button class="btn btn-warning" type="button" onclick="Torch.closeWindow('resourceInsert.html')">关闭</button> -->
+			<button class="btn btn-warning" ng-click="closeWin()">关闭</button>
+		</div>
+	</div>
+	</form>	
+</div>
+</body>
+</html>

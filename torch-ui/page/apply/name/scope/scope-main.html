@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv=pragma content=no-cache>
+    <meta http-equiv=cache-control content=no-cache>
+    <meta http-equiv=expires content=0>
+</head>
+<body>
+<!-- begin of main -->
+<div class="container-fluid MemberAdd" ng-controller="queryController as vm">
+    <form action="" class="form-horizontal">
+
+        <div class="form-group">
+           		<label for="" class="col-sm-2  control-label text-right">主营业务：</label>
+	            <div class="col-sm-3">
+	                <input type="text" class="form-control" ng-value="vm.keyword" ng-model="vm.keyword"/>
+	            </div>
+            	<label for="" class="col-sm-2  control-label text-right">行业代码：</label>
+	            <div class="col-sm-3">
+	                <input type="text" class="form-control" ng-value="vm.dmValue" ng-model="vm.dmValue"/>
+	            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-info" ng-click="vm.search()">
+                    <i class="glyphicon glyphicon-ok"></i><span> 搜索</span>
+                </button>
+            </div>
+        </div>
+        <div class="form-group">
+
+            <!--导航-->
+           <div class="col-sm-4 pre-scrollable">
+               <tree data="vm.treeNodes" select="vm.selectTree(item)" ></tree>
+           </div>
+
+            <!--列表-->
+           <div class="col-sm-8">
+               <table grid-checkbox grid-list="vm.queryList" check-list="vm.checkList"  class="table table-common table-bordered table-hover">
+                   <thead>
+                       <tr>
+                           <th style="width: 10%"></th>
+                           <th style="width: 10%">序号</th>
+                           <th style="width: 40%">行业代码</th>
+                           <th >主营业务</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                       <tr class="text-center" ng-repeat="query in vm.queryList" ng-class="{'selected': query.checked}">
+                           <td class="text-center">
+                               	<div radio-item data="query"></div>
+                           </td>
+                           <td  class="text-center" ng-bind="$index | pageIndex:vm.pageNo.pageNo:vm.pageNo.pageSize"></td>
+                           <td name="dmValue" ng-bind="query.dmValue"></td>
+                           <td name="dmName" ng-bind="query.dmName"></td>
+                       </tr>
+                   </tbody>
+               </table>
+
+               <!--分页-->
+               <div>
+                   <grid-paging page='vm.pageNo' change='vm.changeNum(vm.pageNo.pageNo)'></grid-paging>
+               </div>
+           </div>
+        </div>
+
+        <!--按钮-->
+        <div class="text-center">
+            <button type="button" class="btn btn-info" ng-click="vm.determine()">
+                <i class="glyphicon glyphicon-ok"></i><span> 确定</span>
+            </button>
+        </div>
+
+    </form>
+</div>
+<!-- end of main -->
+<script type="text/javascript" src="../../../../script/entry.js"></script>
+<script type="text/javascript">
+    loadJs('./scope-main.js');
+</script>
+</body>
+</html>

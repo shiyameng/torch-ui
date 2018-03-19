@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv=pragma content=no-cache>
+    <meta http-equiv=cache-control content=no-cache>
+    <meta http-equiv=expires content=0>
+</head>
+<body>
+<!-- begin of main -->
+<div class="container-fluid MemberAdd" ng-controller="auxiliaryController as vm">
+    <form action="" class="form-horizontal">
+
+        <div class="form-group" >
+            <table class="table table-edit table-bordered table-striped small-gap">
+                <thead>
+                    <tr>
+                        <th class="nowrap">规则名称</th>
+                        <th class="nowrap">规则类型</th>
+                        <th class="nowrap">规则错误信息</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center" ng-repeat="auxiliary in vm.auxiliaryData">
+                        <td>
+                            <span ng-bind="auxiliary.name"></span>
+                        </td>
+                        <td>
+                            <span ng-if="auxiliary.type == 1" class="alert-danger"><i class="glyphicon glyphicon-star"></i>锁定</span>
+                            <span ng-if="auxiliary.type == 0" class="alert-info"><i class="glyphicon glyphicon-star"></i>提示</span>
+                        </td>
+                        <td ng-bind="auxiliary.msg"></td>
+                    </tr>
+                    <tr class="text-center">
+                        <td ng-if="vm.auxiliaryData.length == 0" colspan="3" class="alert alert-warning" role="alert">
+                            暂无数据
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--按钮-->
+        <div class="text-center gap" ng-if="vm.saveSetupButton">
+            <button type="button" class="btn btn-primary btn-sm"   ng-click="vm.saveSetup()">
+                <i class="glyphicon glyphicon-floppy-saved"></i>&nbsp;&nbsp;提交
+            </button>
+        </div>
+    </form>
+</div>
+<!-- end of main -->
+<script type="text/javascript" src="../../../../script/entry.js"></script>
+<script type="text/javascript">
+    loadJs('./cp-1100-auxiliary.js');
+</script>
+</body>
+</html>

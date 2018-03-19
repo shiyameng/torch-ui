@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv=pragma content=no-cache>
+    <meta http-equiv=cache-control content=no-cache>
+    <meta http-equiv=expires content=0>
+</head>
+<body>
+<!-- begin of main -->
+<div class="container-fluid" ng-controller="invInfoController as vm">
+    <ng-form class="form-horizontal" name="invInfo">
+
+        <!-- 投资人 -->
+        <div class="form-group ">
+            <div class="col-sm-4 col-xs-4 text-right">
+            	<p class="form-control-static">投资人类型：</p>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+            	<p class="form-control-static" ng-bind="vm.investorInsertForm.invtype|dict:'CA24'"></p>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <div class="col-sm-4 col-xs-4 text-right">
+            	<p class="form-control-static">名称：</p>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+            	<p class="form-control-static" ng-bind="vm.investorInsertForm.inv"></p>
+            </div>
+        </div>
+        
+        <div ng-show="!vm.isEntInv" class="form-group ">
+            <div class="col-sm-4 col-xs-4 text-right">
+            	<p class="form-control-static">证件类型：</p>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+            	<p class="form-control-static" ng-bind="vm.investorInsertForm.certype|dict:'CB16'">证件类型：</p>
+            </div>
+        </div>
+
+        <div ng-show="!vm.isEntInv" class="form-group ">
+            <div class="col-sm-4 col-xs-4 text-right">
+                <p class="form-control-static">证件号码：</p>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+            	<p class="form-control-static" ng-bind="vm.investorInsertForm.cerno"></p>
+            </div>
+        </div>
+
+        <div ng-show="vm.isEntInv" class="form-group">
+            <div class="col-sm-4 col-xs-4 text-right">
+                <p class="form-control-static">证照类型：</p>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+            	<p class="form-control-static" ng-bind="vm.investorInsertForm.blictype|dict:'CA50'"></p>
+            </div>
+        </div>
+
+        <div ng-show="vm.isEntInv" class="form-group">
+            <div class="col-sm-4 col-xs-4 text-right">
+            	<p class="form-control-static">证照号码：</p>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+            	<p class="form-control-static" ng-bind="vm.investorInsertForm.blicno"></p>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <div class="col-sm-4 col-xs-4 text-right">
+            	<p class="form-control-static">认缴出资额（万元）：</p>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+            	<p class="form-control-static" ng-bind="vm.investorInsertForm.subconam"></p>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <div class="col-sm-4 col-xs-4 text-right">
+            	<p class="form-control-static">国别/地区：</p>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+            	<p class="form-control-static" ng-bind="vm.investorInsertForm.country|dict:'CA02'"></p>
+            </div>
+        </div>
+        <!-- 投资人 end-->
+    </ng-form>
+</div>
+<!-- end of main -->
+
+<script type="text/javascript" src="../../../../script/entry.js"></script>
+<script type="text/javascript">
+    loadJs('./inv-info.js');
+</script>
+</body>
+</html>

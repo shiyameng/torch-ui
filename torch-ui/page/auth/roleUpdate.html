@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv=pragma content=no-cache>
+<meta http-equiv=cache-control content=no-cache>
+<meta http-equiv=expires content=0>
+<!--[if lt IE 9]>
+   		<script src="/../../../static/script/util/browser.js"></script>
+   	<![endif]-->
+<script src="/../../../app/script/entry.js"></script>
+<script>
+	loadJs("./roleUpdateTorch.js");
+</script>
+</head>
+<body>
+
+	<div class="container" ng-controller="roleUpdate_update_1_Controller">
+		<form class="form-horizontal" name="roleUpdate_update_1_Form"
+			novalidate>
+			<div class="form-group">
+				<label class="col-sm-3  control-label">排序</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" name="ordernum"
+						ng-model="roleUpdate_update_1.ordernum" rule="number" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3  control-label">角色类型</label>
+				<div class="col-sm-7">
+					<select class="form-control" name="roletype" torch-dict=""
+						ng-model="roleInsert_insert_1.roletype" placeholder="角色所属机关">
+						<option value="">通用</option>
+						<option value="">某机关专用</option>
+						<option value="">某机关及下级机关</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3  control-label">角色名称</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" name="rolename"
+						ng-model="roleUpdate_update_1.rolename" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3  control-label">角色所属机关</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" name="roleorg"
+						ng-model="roleUpdate_update_1.roleorg" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3  control-label">是否有效</label>
+				<div class="col-sm-7">
+					<input type="radio" name="flag" value="1"
+						ng-model="roleUpdate_update_1.flag" /> 有效 <input type="radio"
+						name="flag" value="0" ng-model="roleUpdate_update_1.flag" /> 无效
+				</div>
+			</div>
+			<div align="center">
+				<div class="form-group">
+					<button class="btn btn-primary" ng-click="doSave()">提交</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

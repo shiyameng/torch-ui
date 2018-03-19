@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+<!--[if lt IE 9]>
+	<script src="../../script/util/browser.js"></script>
+<![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv=pragma content=no-cache>
+<meta http-equiv=cache-control content=no-cache>
+<meta http-equiv=expires content=0>
+<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../style/css/common.css">
+<script type="text/javascript" src="../vendor/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="../vendor/angular/angular.js"></script>
+<script type="text/javascript" src="../vendor/angular/ui-bootstrap-tpls-2.4.0.js"></script>
+<script type="text/javascript" src="./frame.js"></script>
+</head>
+<body ng-app="app">
+	<!-- begin of nav -->
+	<nav  class="navbar navbar-default navbar-static-top" role="navigation">
+		<div class="container-fluid">
+			<a class="navbar-brand ">北京工商</a>
+			<ul class="nav nav-pills pull-right center-vertical small-gap"
+				role="tablist">
+				<li role="presentation" class="active"><a href="#">Home</a></li>
+				<li role="presentation"><a href="#">Profile</a></li>
+				<li role="presentation"><a href="#">Messages</a></li>
+			</ul>
+		</div>
+	</nav>
+	<!-- end of nav -->
+
+	<!-- begin of main -->
+	<div class="container-fluid">
+		<div class="row">
+			<!-- begin of left -->
+			<div class="col-md-2" ng-controller="NavbarController as vm">
+				<ul class="list-group">
+				    <li class="list-group-item" ng-repeat="navbarItem in vm.navbar">
+				    	<a href="#" ng-click="vm.navbarToggle(navbarItem)" class="h5" ng-bind="navbarItem.text"></a>
+				    	<ul ng-if="navbarItem.children" ng-show="!!navbarItem.isShow">
+				    		<li class="list-group-item" ng-repeat="navbarChild in navbarItem.children">
+				    			<a href="#" ng-click="vm.navbarLoad(navbarChild)" class="h6" ng-bind="navbarChild.text"></a>
+				    		</li>
+				    	</ul>
+				    </li>
+				</ul>
+			</div>
+			<!-- end of left -->
+
+			<!-- begin of right -->
+			<div class="col-md-10">
+				<uib-tabset active="0">
+					<uib-tab index="0" heading="Static title">
+						Static content
+					</uib-tab>
+					<uib-tab index="$index + 1" ng-repeat="tab in vm.tabs" heading="tab.text">
+						<iframe src="tab.url"></iframe>
+					</uib-tab>
+				</uib-tabset>
+			</div>
+			<!-- end of right -->
+
+		</div>
+	</div>
+	<!-- end of main -->
+</body>
+</html>

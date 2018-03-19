@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv=pragma content=no-cache>
+<meta http-equiv=cache-control content=no-cache>
+<meta http-equiv=expires content=0>
+<script type="text/javascript" src="../script/entry.js"></script>
+<script type="text/javascript">
+	loadJs('./frame.js');
+</script>
+</head>
+<body>
+	<!-- begin of nav -->
+	<nav   class="navbar navbar-default navbar-static-top head" >
+		<div class="container-fluid">
+			<a class="navbar-brand ">
+				<img src="../style/image/banner.png">
+			</a>
+			<ul class="nav nav-pills pull-right center-vertical small-gap">
+				<!--<li role="presentation" ng-class="{active:selected}"><a href="#/">Home</a></li>-->
+				<!--<li role="presentation"><a href="#/login">Profile</a></li>-->
+				<!--<li role="presentation"><a href="#">Messages</a></li>-->
+			</ul>
+		</div>
+	</nav>
+	<!-- end of nav -->
+
+	<!-- begin of main -->
+	<div class="container-fluid" ng-controller="NavbarController as vm">
+		<div class="row">
+			
+			<!-- begin of left -->
+			<div class="col-md-2">
+				<tree data="vm.treeNodes" select="vm.selectTree(item)" ></tree>
+			</div>
+			<!-- end of left -->
+
+			<!-- begin of right -->
+			<div class="col-md-10">
+				<uib-tabset active="vm.navActive" class="uib-tabset-frame tab-common">
+					<uib-tab index="0" select="vm.choice(s)">
+						<uib-tab-heading>
+							首页
+						</uib-tab-heading>
+						<div class="tab-common-content">
+							<div class="embed-responsive embed-responsive-16by9">
+								欢迎登陆
+							</div>
+						</div>
+					</uib-tab>
+					<uib-tab style="border-left:1px solid #fff;" index="$index + 1" 
+						ng-repeat="tab in vm.tabs track by $index"  select="vm.choice($index)">
+						<uib-tab-heading>
+	        				{{tab.text}}
+	        				<span ng-click="vm.refresh($index)" ng-class="{'active-white-refresh':$index==vm.selected,'noactive-blue-refresh':$index!=vm.selected}"></span>
+	        				<span ng-click="vm.del($index,$event)" ng-class="{'active-white-del':$index==vm.selected,'noactive-blue-del':$index!=vm.selected}"></span>
+						</uib-tab-heading>
+						<div class="tab-common-content">
+							<div class="embed-responsive embed-responsive-16by9">
+							    <iframe id="{{ 'tab' + $index}}" class="embed-responsive-item" ng-src="{{tab.url}}"></iframe>
+							</div>
+						</div>
+						
+					</uib-tab>
+				</uib-tabset>
+			</div>
+			<!-- end of right -->
+
+		</div>
+	</div>
+	<!-- end of main -->
+</body>
+</html>

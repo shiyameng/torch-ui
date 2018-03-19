@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv=pragma content=no-cache>
+    <meta http-equiv=cache-control content=no-cache>
+    <meta http-equiv=expires content=0>
+    <link rel="stylesheet" href="../../../../style/css/approve/company/setup/setup.css"/>
+</head>
+<body>
+<!-- begin of main -->
+<div class="container-fluid MemberAdd" ng-controller="queryController as vm">
+    <form action="" class="form-horizontal">
+
+        <div class="form-group">
+            <label for="" class="col-sm-2 col-sm-offset-1 control-label text-right">搜索经营范围：</label>
+            <div class="input-group col-sm-6">
+                <input type="text" class="form-control " ng-model="vm.keyword" ng-value="vm.keyword"><span class="input-group-addon btn btn-primary" ng-click="vm.search()">搜索</span>
+            </div>
+        </div>
+        <h4 class="text-info">
+            已选经营项目：
+        </h4>
+        <div class="form-group">
+
+            <!--导航-->
+           <div class="col-sm-4 pre-scrollable" style="max-height:350px;">
+               <tree data="vm.treeNodes" select="vm.selectTree(item)" ></tree>
+           </div>
+
+            <!--列表-->
+           <div class="col-sm-8">
+               <table grid-checkbox grid-list="vm.queryList" check-list="vm.checkList" class="table table-edit table-bordered table-striped small-gap">
+                   <thead>
+                       <tr>
+                           <th style="width: 10%">
+                               <div checkbox-all data="vm.queryList"></div>
+                           </th>
+                           <th style="width: 10%">序号</th>
+                           <th style="width: 40%">项目</th>
+                           <th >经营范围</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                       <tr class="text-center" ng-repeat="query in vm.queryList" ng-class="{'selected': _checkGrid.checkGridList[$index].checked}">
+                           <td class="text-center">
+                               <div checkbox-item data="query"></div>
+                           </td>
+                           <td  class="text-center" ng-bind="$index | pageIndex:vm.pageNo.pageNo:vm.pageNo.pageSize"></td>
+                           <td ng-bind="query.dmName"></td>
+                           <td ng-bind="query.scopename"></td>
+                       </tr>
+                   </tbody>
+               </table>
+
+               <!--分页-->
+               <div>
+                   <grid-paging page='vm.pageNo' change='vm.changeNum(vm.pageNo.pageNo)'></grid-paging>
+               </div>
+           </div>
+        </div>
+
+        <!--按钮-->
+        <div class="text-center gap">
+            <button type="button" class="btn btn-primary btn-sm" ng-click="vm.determine()">
+                <i class="glyphicon glyphicon-ok"></i><span> 确定</span>
+            </button>
+        </div>
+
+    </form>
+</div>
+<!-- end of main -->
+<script type="text/javascript" src="../../../../script/entry.js"></script>
+<script type="text/javascript">
+    loadJs('./scope-query.js');
+</script>
+</body>
+</html>

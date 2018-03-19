@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv=pragma content=no-cache>
+	<meta http-equiv=cache-control content=no-cache>
+	<meta http-equiv=expires content=0>
+	<!--[if lt IE 9]>
+   		<script src="/../../../static/script/util/browser.js"></script>
+   	<![endif]-->
+	<script src="/../../../app/script/entry.js"></script>
+	    <script>
+		loadJs("./roleInsertTorch.js"); 
+	    </script>
+</head>
+<body>
+			
+<div class="container" ng-controller="roleInsert_insert_1_Controller">
+	<form class="form-horizontal" name="roleInsert_insert_1_Form" novalidate>
+		  <div class="form-group">
+		  </div>
+		  <div class="form-group">
+		     <label class="col-sm-3  control-label">角色类型(通用/某机关专用/某机关及下级机关)</label>
+			 <div class="col-sm-7" > <input type="text" class="form-control" name="roletype" ng-model="roleInsert_insert_1.roletype" /></div>
+		  </div>
+		  <div class="form-group">
+		     <label class="col-sm-3  control-label">角色名称</label>
+			 <div class="col-sm-7" > <input type="text" class="form-control" name="rolename" ng-model="roleInsert_insert_1.rolename" /></div>
+		  </div>
+		  <div class="form-group">
+		     <label class="col-sm-3  control-label">角色所属机关</label>
+			 <div class="col-sm-7" > <input type="text" class="form-control" name="roleorg" ng-model="roleInsert_insert_1.roleorg" /></div>
+		  </div>
+		  <div class="form-group">
+		     <label class="col-sm-3  control-label">是否有效（0-无效，1-有效）</label>
+			 <div class="col-sm-7" > <input type="text" class="form-control" name="flag" ng-model="roleInsert_insert_1.flag" /></div>
+		  </div>
+		<div align="center">
+		<div class="form-group">
+		    <button class="btn btn-primary" ng-click="doSave()">提交</button>
+			<input class="btn btn-primary" type="reset" value="重置" />
+			<button class="btn btn-warning" type="button" onclick="Torch.closeWindow('roleInsert.html')">关闭</button>
+		</div>
+	</div>
+	</form>	
+</div>
+</body>
+</html>

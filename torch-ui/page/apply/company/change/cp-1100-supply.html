@@ -1,0 +1,67 @@
+
+<!-- begin of main -->
+<div ng-controller="supplyController as vm">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h5 class="panel-title">企业补充信息</h5>
+        </div>
+        <div class="panel-body">
+            <ng-form name="supplyChange" action="" class="form-horizontal">
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label text-right">联系电话：</label>
+                    <div class="col-sm-4">
+                        <input type="text" name="telephone" class="form-control" ng-model="vm.supQueryForm.tel" rule="telephone|mobile"/>
+                    </div>
+                    <label for="" class="col-sm-2 control-label">邮政编码：</label>
+                    <div class="col-sm-4">
+                        <input type="text" name="postalcode" class="form-control" ng-model="vm.supQueryForm.postalcode" rule="postal"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">电子邮件：</label>
+                    <div class="col-sm-4">
+                        <input type="text" name="email" class="form-control" ng-model="vm.supQueryForm.email" rule="email"/>
+                    </div>
+                    <label for="" class="col-sm-2 control-label text-right">住所产权类型：</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" name="domproright"  torch-dict="DFCP12"  ng-model="vm.supQueryForm.domproright"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label text-right">生产经营地址：</label>
+                    <div class="col-sm-4">
+                        <cascade city one="vm.supQueryForm.domprov" two="vm.supQueryForm.domcity" three="vm.supQueryForm.domcounty"></cascade>
+                    </div>
+                    <label class="col-sm-2 control-label text-right" for="">执照副本数：</label>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="text"
+                               name="copyNo"
+                               ng-model="vm.supQueryForm.copyNo"
+                               rule="contrast:1,99;length:1,2"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <input type="text" name="domother" class="form-control" ng-model="vm.supQueryForm.domother" rule="length:0,50"/>
+                    </div>
+                </div>
+
+                <!--按钮-->
+                <div class="text-center gap">
+                    <button class="btn btn-primary" ng-click="vm.previous()">
+                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>上一步
+                    </button>
+                    &nbsp;&nbsp;
+                    <button class="btn btn-primary" ng-click="vm.saveSetup()">
+                        <span class="glyphicon glyphicon-saved" aria-hidden="true"></span>保存
+                    </button>
+                    &nbsp;&nbsp;
+                    <button type="button" class="btn btn-success" ng-click="vm.opinion()">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 审批意见
+                    </button>
+                </div>
+            </ng-form>
+        </div>
+    </div>
+</div>
+<!-- end of main -->

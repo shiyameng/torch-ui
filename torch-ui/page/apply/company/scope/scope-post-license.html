@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv=pragma content=no-cache>
+    <meta http-equiv=cache-control content=no-cache>
+    <meta http-equiv=expires content=0>
+    <link rel="stylesheet" href="../../../../style/css/approve/company/setup/setup.css"/>
+</head>
+<body>
+<!-- begin of main -->
+<div class="container-fluid MemberAdd form-group" ng-controller="postLicenseController as vm">
+    <form action="" class="form-horizontal">
+
+        <h4>
+            （工商登记完成后还需要去其他机关办理许可登记）
+        </h4>
+        <div class="input-group col-sm-6 col-sm-offset-3">
+            <input type="text" class="form-control " ng-model="vm.keyword" ng-value="vm.keyword"><span class="input-group-addon btn btn-primary" ng-click="vm.search()">搜索</span>
+        </div>
+
+        <div class="gap">
+            <table  grid-checkbox grid-list="vm.queryList" check-list="vm.checkList" class="table table-edit table-bordered table-striped small-gap">
+                <thead>
+                    <tr class="text-center">
+                        <th>
+                            <div checkbox-all data="vm.queryList"></div>
+                        </th>
+                        <!--<th>操作</th>-->
+                        <th>经营范围</th>
+                        <th>实施机关</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="query in vm.queryList" class="text-center" ng-class="{'selected': _checkGrid.checkGridList[$index].checked}">
+                        <td  style="width: 2%">
+                            <div checkbox-item data="query"></div>
+                        </td>
+                        <td ng-bind="query.licMetterMemo"></td>
+                        <td ng-bind="query.licAnth"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!--分页-->
+            <div class="form-group">
+                <grid-paging page='vm.pageNo' change='vm.changeNum(vm.pageNo.pageNo)'></grid-paging>
+            </div>
+        </div>
+        <div class="text-center gap">
+            <button type="button" class="btn btn-info btn-sm"  ng-click="vm.save()">
+                <i class="glyphicon glyphicon-ok"></i> 确定
+            </button>
+        </div>
+    </form>
+</div>
+<!-- end of main -->
+<script type="text/javascript" src="../../../../script/entry.js"></script>
+<script type="text/javascript">
+    loadJs('./scope-post-license.js');
+</script>
+</body>
+</html>

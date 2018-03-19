@@ -1,0 +1,373 @@
+/*默认样式*/
+
+
+/*设置个别样式*/
+.cursorPointer{
+    /* 设置小手的样式 */
+    cursor:pointer
+}
+/*textarea 禁止拖动*/
+.resizeNone{
+    resize: none
+}
+/*table*/
+table > tbody > tr > td.text-center{
+    vertical-align: middle;
+}
+/*左边框为1px 白色*/
+.container-fluid  .row .col-md-10 .border-left{
+    border-left:1px solid #fff
+}
+.margin10{
+    margin:10px;
+}
+.lineHeight34{
+    line-height: 34px;
+}
+.padding-top{
+    padding-top: 6px;
+}
+.form-group .approvalLevel{
+    width: 150px;
+    display: inline-block
+}
+/**
+ * 企业变更页面 样式
+ *
+ */
+.businessChange .F2F2F2{
+    background-color: #F2F2F2;
+}
+
+.businessChange thead th{
+    word-break: keep-all;
+}
+/*.businessChange thead > tr > th:nth-child(1){*/
+    /*width:30px;*/
+/*}*/
+/*.businessChange thead > tr > th:last-child{*/
+    /*width:30px;*/
+/*}*/
+
+/**
+ * 添加主要人员信息 样式
+ * 表单的名称右对齐居中
+ */
+.MemberAdd .genderHeight{
+    line-height:34px;
+}
+.MemberAdd .MemberAddtSave .btn-info{
+    background-color: #6198D5;
+    border-color: #6198D5;
+}
+.MemberAdd > .form-group > .input-group{
+    float:left
+}
+
+
+/**
+ * 公司设立页面的样式
+ * 模块1的样式
+ */
+
+/*模块3 设立-基本信息的样式*/
+.module3 .col-sm-2{
+    padding:0;
+    padding-right:10px;
+}
+.module3 .col-sm-3{
+    padding:0;
+}
+.module3 .col-sm-8{
+    padding:0;
+}
+.module3 .auxiliaryEntry{
+    padding:0 15px;
+    text-align:right;
+}
+/*模块4 设立-股东的样式*/
+.module4 .module4Container > div{
+    width:70%;
+    margin:0 auto;
+}
+.capitalSum{
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    color:#FF8E0B;
+    background-color:#FDF9F0;
+}
+.module4Container ul li{
+    float:left;
+    padding:0 0 0 10px;
+}
+
+.module4Container ul > li > .edit-personnel-style{
+    border:1px solid #90dabb;
+    background-color:#d7faeb;
+}
+
+.module4Container ul div{
+    border:1px solid #9DCFF4;
+    background-color:#EDF7FF;
+    color:#428bca;
+    padding:5px;
+    margin:0 10px 10px 0;
+}
+
+.module4Container .shareholderName .label{
+    padding: .3em .6em .3em;
+    display: inline-block;
+}
+.module4Container .companyName .label{
+    padding: .3em .6em .3em;
+    display: inline-block;
+}
+.module4Container .companyName .labelName{
+    display: block;
+    margin-right:7px;
+}
+.module4Container ul{
+    overflow:auto;
+    padding:0;
+}
+.module4Container ul li span{
+    display:block;
+    padding-bottom:5px;
+}
+.module4Container div > p{
+    margin:0;
+}
+/*模块5*/
+.module5Container > .director{
+    width:75%;
+    margin:0 auto;
+    padding: 5px 15px;
+    border-bottom: 1px dashed #000;
+}
+.module5Container > .directorOption{
+    width:75%;
+    margin:0 auto;
+    padding: 10px 0 10px 15px;
+}
+.module5Container .directors{
+    color:#FF8E0B;
+}
+.module5Container ul li{
+    float:left;
+    border:1px solid #9DCFF4;
+    background-color:#EDF7FF;
+    color:#428bca;
+    padding:5px;
+    margin:0 10px 10px 0;
+}
+.module5Container > div{
+    width:70%;
+    margin:0 auto;
+}
+.module5Container .marginTop10{
+    margin-top:10px;
+}
+
+.module5Container .marginTop10 select{
+    display: inline-block;
+    width: 20%;
+}
+.module5Container ul{
+    margin:0;
+}
+.module5Container .label-primary{
+    padding: .3em .6em .3em;
+}
+.width100{
+    width:100px;
+}
+.floatRight{
+    float:right;
+}
+/* //tab上的那个蓝色小横条 */
+.top-banner{
+	height: 2px;
+    width: 100%;
+    background: #428bca;
+    display:none;
+}
+li.active>.top-banner{
+	display:block
+}
+/* //frame里的banner */
+.banner-right{
+	display: inline-block;
+    float: right;
+    width: 400px;
+    color: #fff;
+    height: 50px;
+}
+.nav-tabs>.banner-right > li.active > a{
+	background:red;
+}
+/* inv-1100-edit样式 */
+
+.top20{
+	margin-top:20px;
+}
+.ptop20{
+	padding-top:20px;
+}
+.divCenter{
+	width: 300px;
+    margin: 20px auto 0;
+}
+.iconred{
+	color:red;
+}
+table[name="inv"]>tbody>tr>td{
+	text-align:center;
+}
+.disInline{
+	display:inline-block;
+}
+/* //cp-1100-setup.html */
+ul[id="tabs"]{
+	overflow:inherit;
+	height:30px;
+	/* border:1px solid #ddd; */
+}
+.nav-tabs > li > a.link {
+	margin-right:0px;
+}
+a.link:hover, a.link:focus,a.link{
+	font-family:"Microsoft YaHei";
+	font-size:12px;
+	color:#666;
+}
+.nav-tabs > li.active > a.link, .nav-tabs > li.active > a.link:hover, .nav-tabs > li.active > a.link:focus{
+	color:#438eb9;
+	background:#f7f7f7;
+}
+ul[id="tabs"]>li>a{
+	line-height: 1.25;
+}
+.container-fluid{
+	padding-left:0px;
+	padding-right:0px;
+}
+div[name="tab"]{
+    /*font-size: 12px;*/
+    font-family: Microsoft YaHei;
+}
+div[name="view"] .container-fluid{
+	border-top:none;
+}
+/* 弹出框 */
+.modal-new-header{
+	/* background-image:url(../../../../../style/image/6.png);
+	background-size:100%; */
+}
+.popover-content{
+    font-size: 14px;
+    font-family: Microsoft YaHei;
+    color: #428bca;
+}
+button.btn-confirm{
+	background: #D25D47;
+    border: #D25D47;
+}
+button.btn-close{
+	background:#ACBBC3;
+	border:#ACBBC3;
+	color:#fff;
+}
+button>img{
+	vertical-align: baseline;
+    padding: 3px 3px 0px;
+}
+.modal-new-header{
+	background:red;
+}
+/* 经营范围 */
+.range-banner{
+	background:#f1f8fd;
+	height:30px;
+	line-height:30px;
+	color:#666;
+	font-family:"SongTi";
+}
+.range-padding-left{
+	padding-left:10px;
+}
+.range-margin-bottom{
+	min-height:100px;
+	margin-bottom:10px;
+}
+div.form-control{
+	min-height:100px;
+	height:auto;
+}
+i.box-green-icon{
+	background-image: url("../../../../../style/image/setup/range-green.png");
+    width: 16px;
+    height: 16px;
+    float:right;
+    margin-top: -6px;
+}
+.box-gray-icon{
+	background-image: url("../../../../../style/image/setup/range-gray.png");
+    width: 16px;
+    height: 16px;
+   	float:right;
+    margin-top: -6px;
+}
+span.box-green{
+	min-width: 74px;
+    min-height: 31px;
+    display: inline-block;
+    border: 2px solid #a6d9b7;
+    text-align: center;
+    line-height: 31px;
+    padding: 0 0 0 5px;
+    margin-right: 15px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    border-radius: 0 15px 0 0;
+    color: #a5d9b7;
+    font-size:12px;
+    font-family:"Microsoft YaHei";
+}
+.box-gray{
+	min-width: 74px;
+    min-height: 31px;
+    display: inline-block;
+    border: 2px solid #dcdcdc;
+    text-align: center;
+    line-height: 31px;
+    padding: 0 0 0 5px;
+    margin-right: 15px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    border-radius: 0 15px 0 0;
+    font-size:12px;
+    font-family:"Microsoft YaHei";
+}
+.range-banner > span{
+	cursor:pointer;
+}
+/* 当选中常用行业中的某个值 */
+.btn-click{
+	background: #7BB6D8;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    padding: 0 10px;
+    margin-right: 8px;
+}
+/* cp-1100-apply.html样式 */
+.more{
+	padding-right: 10px;
+    cursor: pointer;
+    margin-left: -62px;
+   /*  z-index: 100000; */
+    position: absolute;
+    height: 30px;
+    line-height: 30px;
+}

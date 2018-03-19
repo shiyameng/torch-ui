@@ -1,0 +1,34 @@
+.icon{
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+.icon-user{
+    display: inline-block;
+    width:16px;
+    height:16px;
+    background:url(/app/style/image/icon/user.png) no-repeat;
+    vertical-align: bottom;
+}
+.icon-del{
+    display: inline-block;
+    width:15px;
+    height:16px;
+    background:url(/app/style/image/icon/del.png) no-repeat;
+    vertical-align: bottom;
+}
+.icon-addMain{
+    display: inline-block;
+    width:94px;
+    height:45px;
+    background:url(/app/style/image/icon/addMain.png) no-repeat;
+    vertical-align: bottom;
+    background-size:94px 45px;
+}

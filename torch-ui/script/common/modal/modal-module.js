@@ -1,0 +1,1 @@
+angular.module('common.modal', ['ngAnimate', 'ui.bootstrap']);

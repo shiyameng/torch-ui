@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv=pragma content=no-cache>
+    <meta http-equiv=cache-control content=no-cache>
+    <meta http-equiv=expires content=0>
+    <!--<link rel="stylesheet" href="../../../../style/css/approve/company/setup/setup.css"/>-->
+</head>
+<body>
+<!-- begin of main -->
+<div class="container-fluid MemberAdd" ng-controller="licenseController as vm">
+    <ng-form name="prelicense" action="" class="form-horizontal">
+
+        <div class="form-group">
+            <div class="col-xs-4 col-sm-4 text-right">
+                <i class="red">*</i>
+                <label for="" class="control-label">许可机关：</label>
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <select class="form-control" name="a" id="" torch-dict="DFCM01" ng-model="vm.scopePreInsertForm.licname" ng-value="vm.scopePreInsertForm.licname" rule="must"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-4 col-sm-4  text-right">
+                <i class="red">*</i>
+                <label for="" class="control-label">许可文件名称：</label>
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <select class="form-control" name="b" id="" torch-dict="CA25" ng-model="vm.scopePreInsertForm.licanth" ng-value="vm.scopePreInsertForm.licanth" rule="must"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-4 col-sm-4 text-right">
+                <i class="red">*</i>
+                <label for="" class="control-label">许可文件文号：</label>
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <input id="" type="text" class="form-control"  ng-model="vm.scopePreInsertForm.licno" ng-value="vm.scopePreInsertForm.licno" rule="must"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-4 col-sm-4  text-right">
+                <i class="red">*</i>
+                <label for="" class="control-label">许可文件状态：</label>
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <p class="form-control-static">有效</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-4 col-sm-4 text-right">
+                <i class="red">*</i>
+                <label for="" class="control-label">有效期自：</label>
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <form-date name="birthday" date="vm.scopePreInsertForm.valfrom"></form-date>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-4 col-sm-4  text-right">
+                <label for="" class="control-label">有效期至：</label>
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <form-date name="birthday" date="vm.scopePreInsertForm.valto" ></form-date>
+            </div>
+        </div>
+        <div class="text-center gap">
+            <button type="button" class="btn btn-primary btn-sm" ng-click="vm.determine()">
+                <i class="glyphicon glyphicon-ok" ></i> 确定
+            </button>
+        </div>
+    </ng-form>
+</div>
+<!-- end of main -->
+<script type="text/javascript" src="../../../../script/entry.js"></script>
+<script type="text/javascript">
+    loadJs('./license-information.js');
+</script>
+</body>
+</html>

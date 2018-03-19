@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv=pragma content=no-cache>
+<meta http-equiv=cache-control content=no-cache>
+<meta http-equiv=expires content=0>
+<!--[if lt IE 9]>
+   		<script src="/../../../static/script/util/browser.js"></script>
+   	<![endif]-->
+<script src="/../../../app/script/entry.js"></script>
+<script>
+	loadJs("./userInsertTorch.js");
+</script>
+</head>
+<body>
+
+	<div class="container" ng-controller="userInsertForm_Controller">
+		<form class="form-horizontal" name="userInsertForm_Form" novalidate>
+			<div class="form-group"></div>
+			<div class="form-group">
+				<label class="col-sm-3  control-label">机关代码</label>
+				<div class="col-sm-7">
+					<select class="form-control" name="orgcode" torch-dict=""
+						ng-model="userInsertForm.orgcode" placeholder="机关代码"><option
+							value="">--请选择--</option></select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3  control-label">管理员标识</label>
+				<div class="col-sm-7">
+					<input type="radio" name="adminflag" value="1"
+						ng-model="userInsertForm.adminflag" /> 管理员 <input type="radio"
+						name="adminflag" value="0" ng-model="userInsertForm.adminflag" /> 非管理员
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3  control-label">登录名</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" name="loginname"
+						ng-model="userInsertForm.loginname" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3  control-label">登陆密码</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" name="loginpwd"
+						ng-model="userInsertForm.loginpwd" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3  control-label">手机号</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" name="mobile"
+						ng-model="userInsertForm.mobile" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3  control-label">座机</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" name="tel"
+						ng-model="userInsertForm.tel" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3  control-label">电子邮箱</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" name="email"
+						ng-model="userInsertForm.email" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3  control-label">用户类型</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" name="usertype"
+						ng-model="userInsertForm.usertype" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3  control-label">证件号码</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" name="idcard"
+						ng-model="userInsertForm.idcard" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3  control-label">姓名</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" name="username"
+						ng-model="userInsertForm.username" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3  control-label">性别</label>
+				<div class="col-sm-7">
+						<input type="text" radio name="sex" torch-dict="CB17" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3  control-label">有效标志</label>
+				<div class="col-sm-7">
+						<!-- <input type="text" radio name="sex" torch-dict="CZ11" > -->
+						<input type="radio" name="flag" value="1"
+						ng-model="userInsertForm.flag" /> 有效 <input type="radio"
+						name="flag" value="0" ng-model="userInsertForm.flag" /> 无效
+				</div>
+			</div>
+			<div align="center">
+				<div class="form-group">
+					<button class="btn btn-primary" ng-click="doSave()">提交</button>
+					<input class="btn btn-primary" type="reset" value="重置" />
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

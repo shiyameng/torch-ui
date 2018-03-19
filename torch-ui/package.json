@@ -1,0 +1,33 @@
+{
+  "name": "market",
+  "version": "0.1.0",
+  "description": "torch-ui",
+  "keywords": "torch",
+  "license": "BSD",
+  "engines": {
+    "node": ">=0.10.1"
+  },
+  "private": true,
+  "style": "dist/css/torch.css",
+  "files": [
+    "page",
+    "script",
+    "style",
+    "vendor",
+    "Gruntfile.js",
+    "LICENSE"
+  ],
+  "devDependencies": {
+    "btoa": "~1.1.2",
+    "glob": "~7.0.3",
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^3.0.1",
+    "jasmine": "^2.6.0",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coffee-preprocessor": "^1.0.1",
+    "karma-jasmine": "^1.1.0"
+  }
+}

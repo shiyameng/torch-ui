@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv=pragma content=no-cache>
+    <meta http-equiv=cache-control content=no-cache>
+    <meta http-equiv=expires content=0>
+</head>
+<body>
+    <div name="tab" ng-controller="changeController as vm">
+        <ul class="nav nav-tabs tab-bg">
+            <li role="presentation" ng-class="{true: 'active', false: ''}[manage]">
+                <div class="top-banner"></div>
+                <a href="" ng-click="url('manageChange')" class="link">业务办理信息</a>
+            </li>
+            <li role="presentation" ng-class="{true: 'active', false: ''}[apply]">
+                <div class="top-banner"></div>
+                <a href="" ng-click="url('applyChange')" class="link">申请信息</a>
+            </li>
+            <li role="presentation" ng-class="{true: 'active', false: ''}[supply]">
+                <div class="top-banner"></div>
+                <a href="" ng-click="url('supplyChange')" class="link">补充信息</a>
+            </li>
+        </ul>
+        <div ng-view name="view" class="box little-gap" onload="vm.loadView()"></div>
+    </div>
+
+    <script type="text/javascript" src="../../../../script/entry.js"></script>
+    <script type="text/javascript">
+        loadJs('./cp-1100-change.js');
+    </script>
+</body>
+</html>

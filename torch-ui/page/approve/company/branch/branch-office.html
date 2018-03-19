@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv=pragma content=no-cache>
+    <meta http-equiv=cache-control content=no-cache>
+    <meta http-equiv=expires content=0>
+</head>
+<body>
+<!-- begin of main -->
+<div class="container-fluid" ng-controller="branchOfficeController as vm">
+    <ng-form class="form-horizontal" name="branchOffice">
+
+        <div class="form-group ">
+            <div class="col-sm-4 col-xs-4 text-right">
+                <p>名称：</p>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <p ng-bind="vm.entBranchInsertForm.brname"></p>
+            </div>
+        </div>
+        <div class="form-group ">
+            <div class="col-sm-4 col-xs-4 text-right">
+                <p>注册号：</p>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <p ng-bind="vm.entBranchInsertForm.regno"></p>
+            </div>
+        </div>
+        <div class="form-group ">
+            <div class="col-sm-4 col-xs-4 text-right">
+                <p>统一社会信用代码：</p>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <p ng-bind="vm.entBranchInsertForm.uniscid"></p>
+            </div>
+        </div>
+        <div class="form-group ">
+            <div class="col-sm-4 col-xs-4 text-right">
+                <p>经营场所：</p>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <p>
+                    <span ng-bind="vm.entBranchInsertForm.domprov | dict:'CA01'"></span>
+                    <span ng-bind="vm.entBranchInsertForm.domcity | dict:'CA01'"></span>
+                </p>
+            </div>
+        </div>
+        <div class="form-group ">
+            <div class="col-sm-4 col-xs-4 text-right">
+                <p>负责人姓名：</p>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <p ng-bind="vm.entBranchInsertForm.name"></p>
+            </div>
+        </div>
+
+    <!-- 保存按钮 -->
+    <div class="text-center gap">
+        <div class="btn btn-primary" ng-click="vm.determine()">
+            <span class="glyphicon glyphicon-saved" aria-hidden="true"></span>保存
+        </div>
+    </div>
+    </ng-form>
+</div>
+<!-- end of main -->
+
+<script type="text/javascript" src="../../../../script/entry.js"></script>
+<script type="text/javascript">
+    loadJs('./branch-office.js');
+</script>
+</body>
+</html>

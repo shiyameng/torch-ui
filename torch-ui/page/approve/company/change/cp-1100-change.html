@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv=pragma content=no-cache>
+    <meta http-equiv=cache-control content=no-cache>
+    <meta http-equiv=expires content=0>
+</head>
+<body>
+<!-- begin of main -->
+<div class="container-fluid MemberAdd" ng-controller="changeController as vm">
+
+    <uib-tabset active="0" class="tab-sm">
+        <uib-tab index="0" disable=true >
+            <uib-tab-heading>企业变更－网上审查</uib-tab-heading>
+        </uib-tab>
+    </uib-tabset>
+
+    <!-- begin of main -->
+    <div class="gap">
+        <form action="" class="form-horizontal businessChange">
+            <uib-accordion close-others="oneAtATime">
+                <!-- 经办人信息 -->
+                <div uib-accordion-group class="panel-info" is-open="true">
+                    <uib-accordion-heading>
+                        <i class="glyphicon glyphicon-file"></i>经办人信息
+                    </uib-accordion-heading>
+                        <!-- 经办人姓名和申请方式 -->
+                        <div class="form-group ">
+                            <div class="col-sm-2 text-right">
+                                <p>经办人姓名：</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <p class="form-center" name="linkman" ng-bind="vm.applyForm.linkman">
+                            </div>
+                            <div class="col-sm-2 text-right">
+                                <p>申请方式：</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <p class="form-center" ng-bind="vm.applyForm.appform | dict:'CA90'"></p>
+                            </div>
+                        </div>
+                        <!-- 证件类型和证件号码  -->
+                        <div class="form-group ">
+                            <div class="col-sm-2 text-right">
+                                <p>证件类型：</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <p class="form-center" ng-bind="vm.applyForm.certype | dict:'CB16'"></p>
+                            </div>
+                            <div class="col-sm-2 text-right">
+                                <p>证件号码：</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <p class="form-center" name="cerno" ng-bind="vm.applyForm.cerno">
+                            </div>
+                        </div>
+                        <!-- 固定电话和移动电话 -->
+                        <div class="form-group ">
+                            <div class="col-sm-2 text-right">
+                                <p>固定电话：</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <p ng-bind="vm.applyForm.tel"></p>
+                            </div>
+                            <div class="col-sm-2 text-right">
+                                <p>移动电话：</p>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <p ng-bind="vm.applyForm.mobtel"></p>
+                            </div>
+                        </div>
+                </div>
+
+                <!-- 模块2 企业名称-->
+                <div ng-class="{true:'show',false:'hide'}[vm.nameChange]" uib-accordion-group class="panel-info" is-open="true">
+                    <uib-accordion-heading>
+                        <i class="glyphicon glyphicon-file"></i>企业名称
+                    </uib-accordion-heading>
+                    <div class="col-sm-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="info">
+                                    <th class="text-center col-sm-6">变更前</th>
+                                    <th class="text-center col-sm-6">变更后</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center" ng-bind="vm.basicEntQueryForm.rsentname"></td>
+                                    <td class="text-center" ng-bind="vm.basicEntQueryForm.entname"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 模块3 住所-->
+                <div ng-class="{true:'show',false:'hide'}[vm.addressChange]" uib-accordion-group class="panel-info" is-open="true">
+                    <uib-accordion-heading>
+                        <i class="glyphicon glyphicon-file"></i>住所
+                    </uib-accordion-heading>
+                    <div class="col-sm-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="info">
+                                    <th class="text-center col-sm-6">变更前</th>
+                                    <th class="text-center col-sm-6">变更后</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center" ng-bind="vm.basicEntQueryForm.rsdom"></td>
+                                    <td class="text-center" ng-bind="vm.basicEntQueryForm.dom"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 模块4 营业期限-->
+                <div ng-class="{true:'show',false:'hide'}[vm.termChange]" uib-accordion-group class="panel-info" is-open="true">
+                    <uib-accordion-heading>
+                        <i class="glyphicon glyphicon-file"></i>营业期限
+                    </uib-accordion-heading>
+                    <div class="col-sm-12">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr class="info">
+                                <th class="text-center col-sm-6">变更前</th>
+                                <th class="text-center col-sm-6">变更后</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="text-center" >
+                                    <span ng-bind="vm.basicEntQueryForm.rstradeterm"></span>年
+                                </td>
+                                <td class="text-center" >
+                                    <span ng-bind="vm.basicEntQueryForm.tradeterm"></span>年</tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 模块5 经营范围-->
+                <div ng-class="{true:'show',false:'hide'}[vm.scopeChange]" uib-accordion-group class="panel-info" is-open="true">
+                    <uib-accordion-heading>
+                        <i class="glyphicon glyphicon-file"></i>经营范围
+                    </uib-accordion-heading>
+                    <div class="col-sm-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="info">
+                                    <th class="text-center col-sm-1"></th>
+                                    <th class="text-center col-sm-5">变更前</th>
+                                    <th class="text-center col-sm-5">
+                                        变更后
+                                        <span class="pull-right">
+                                            <a class="cursorPointer" ng-click="vm.modify()" ng-bind="vm.modifyName"></a>
+                                            &nbsp;&nbsp;
+                                        </span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="text-center" style="vertical-align: middle">经营范围</td>
+                                <td class="text-center" style="vertical-align: middle" ng-bind="vm.basicEntQueryForm.rsopscope"></td>
+                                <td class="text-center">
+                                    <ng-from name="modifyChange">
+                                        <textarea
+                                                ng-show="vm.modifyShow"
+                                                ng-model="vm.basicEntQueryForm.opscope"
+                                                rows="5"
+                                                class="form-control resizeNone"
+                                                rule="must">
+                                        </textarea>
+                                        <span
+                                                ng-show="!vm.modifyShow"
+                                                ng-bind="vm.basicEntQueryForm.opscope">
+                                        </span>
+                                    </ng-from>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" style="vertical-align: middle">许可信息</td>
+                                <td style="vertical-align: middle">
+                                    <div class="gap" ng-repeat="basicLicense in vm.basicWkLicenseQueryList">
+                                        <div>
+                                            <b>许可文件名称：</b>
+                                            <b ng-bind="basicLicense.licanth | dict:'CA25'"></b>
+                                        </div>
+                                        <div>
+                                            <span>许可文件文号：</span>
+                                            <span ng-bind="basicLicense.licno"></span>
+                                        </div>
+                                        <div>
+                                            <span style="padding-left:28px">许可机关：</span>
+                                            <span ng-bind="basicLicense.licname | dict:'DFCM01'"></span>
+                                        </div>
+                                        <div>
+                                            <span style="padding-left:14px">许可有限期：</span>
+                                            <span ng-bind="basicLicense.valto"></span>
+                                        </div>
+                                        <div>
+                                            <span style="padding-left:14px">许可证状态：</span>
+                                            <span ng-bind="basicLicense.licstate | dict:'CA26'"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div ng-repeat="basicLicense in vm.basicRsLicenseQueryList" class="gap">
+                                        <div>
+                                            <b>许可文件名称：</b>
+                                            <b ng-bind="basicLicense.licanth | dict:'CA25'"></b>
+                                        </div>
+                                        <div>
+                                            <span>许可文件文号：</span>
+                                            <span ng-bind="basicLicense.licno"></span>
+                                        </div>
+                                        <div>
+                                            <span style="padding-left:28px">许可机关：</span>
+                                            <span ng-bind="basicLicense.licname | dict:'DFCM01'"></span>
+                                        </div>
+                                        <div>
+                                            <span style="padding-left:14px">许可有限期：</span>
+                                            <span ng-bind="basicLicense.valto"></span>
+                                        </div>
+                                        <div>
+                                            <span style="padding-left:14px">许可证状态：</span>
+                                            <span ng-bind="basicLicense.licstate  | dict:'CA26'"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 模块6 >股东 | 注册资本-->
+                <div ng-class="{true:'show',false:'hide'}[vm.invChange || vm.regcapChange]" uib-accordion-group class="panel-info" is-open="true">
+                    <uib-accordion-heading>
+                        <i class="glyphicon glyphicon-file"></i>股东 | 注册资本
+                    </uib-accordion-heading>
+                    <!-- 自然人股东-->
+                    <div ng-class="{true:'show',false:'hide'}[vm.invChange]" class="col-sm-12">
+                        <div>自然人股东</div>
+                        <table class="table table-bordered table-edit little-gap">
+                            <thead>
+                            <tr class="info">
+                                <th class="text-center">序号</th>
+                                <th class="text-center">股东名称</th>
+                                <th class="text-center">证件编号</th>
+                                <th class="text-center">出资金额</th>
+                                <th class="text-center">出资情况</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="natural in vm.basicInvQueryList" ng-class="{true: 'active', false: ''}[natural.modifysign >= 30]">
+                                <td  class="text-center" ng-bind="$index | pageIndex:vm.basicInvQueryListPage.pageNo:vm.basicInvQueryListPage.pageSize"></td>
+                                <td class="text-center">
+                                    <span ng-if="natural.modifysign == 2">编辑</span>
+                                    <span ng-if="natural.modifysign == 1">新增</span>
+                                    <span ng-if="natural.modifysign >= 30">删除</span>
+                                    <span ng-bind="natural.inv"></span>
+                                </td>
+                                <td class="text-center" ng-bind="natural.cerno"></td>
+                                <td class="text-center">
+                                    <span ng-bind="natural.subconam"></span>万
+                                </td>
+                                <td class="text-center">
+                                    <div ng-repeat="time in natural.stagespay">
+                                        <span ng-bind="time.cursubconam"></span>万
+                                        <span ng-bind="time.conform | dict:'CA22'"></span>
+                                        <span ng-bind="time.condate"></span>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-warning btn-xs" ng-click="vm.invDetails(natural.invid)">详情</button>
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td ng-if=" vm.basicInvQueryList.length == 0" colspan="6" class="alert alert-warning" role="alert">
+                                    暂无数据
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!--分页-->
+                        <div ng-if=" vm.basicInvQueryListPage.pageSize < vm.basicInvQueryListPage.total " class="text-center" style="margin-top:10px;">
+                            <grid-paging page='vm.basicInvQueryListPage' change='vm.basicInvQueryListNum()'></grid-paging>
+                        </div>
+                    </div>
+                    <!-- 非自然人股东-->
+
+                    <div ng-class="{true:'show',false:'hide'}[vm.invChange]" class="col-sm-12">
+                        <div>非自然人股东</div>
+                        <table class="table table-bordered table-edit little-gap">
+                            <thead>
+                            <tr class="info">
+                                <th class="text-center">序号</th>
+                                <th class="text-center">名称</th>
+                                <th class="text-center">类型</th>
+                                <th class="text-center">证件编号</th>
+                                <th class="text-center">出资情况</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="natural in vm.basicCpInvQueryList" ng-class="{true: 'active', false: ''}[natural.modifysign >= 30]">
+                                <td class="text-center" ng-bind="$index | pageIndex:vm.basicCpInvQueryListPage.pageNo:vm.basicCpInvQueryListPage.pageSize"></td>
+                                <td class="text-center">
+
+                                    <span ng-if="natural.modifysign == 2">编辑</span>
+                                    <span ng-if="natural.modifysign == 1">新增</span>
+                                    <span ng-if="natural.modifysign >= 30">删除</span>
+
+                                    <span ng-bind="natural.inv"></span>
+                                </td>
+                                <td class="text-center" ng-bind="natural.invtype | dict:'CA24'"></td>
+                                <td class="text-center" ng-bind="natural.blicno"></td>
+                                <td class="text-center">
+                                    <div ng-repeat="time in natural.stagespay">
+                                        <span ng-bind="time.cursubconam"></span>万
+                                        <span ng-bind="time.conform | dict:'CA22'"></span>
+                                        <span ng-bind="time.condate"></span>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-warning btn-xs" ng-click="vm.entInvDetails(natural.invid)">详情</button>
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td ng-if=" vm.basicCpInvQueryList.length == 0" colspan="6" class="alert alert-warning" role="alert">
+                                    暂无数据
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!--分页-->
+                        <div ng-if=" vm.basicCpInvQueryListNum.pageSize < vm.basicCpInvQueryListNum.total " class="text-center" style="margin-top:10px;">
+                            <grid-paging page='vm.basicCpInvQueryListPage' change='vm.basicCpInvQueryListNum()'></grid-paging>
+                        </div>
+                    </div>
+                    <!-- 注册资本-->
+
+                    <div ng-class="{true:'show',false:'hide'}[vm.regcapChange]" class="col-sm-12">
+                        <div>注册资本</div>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr class="info">
+                                <th class="text-center col-sm-6">变更前</th>
+                                <th class="text-center col-sm-6">变更后</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="text-center">
+                                    <span ng-bind="vm.basicRegcapForm.rsregcap"></span>万
+                                </td>
+                                <td class="text-center">
+                                    <span ng-bind="vm.basicRegcapForm.regCap"></span>万
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 模块7 主要人员变更情况-->
+                <div ng-class="{true:'show',false:'hide'}[vm.memChange || vm.lerepChange]" uib-accordion-group class="panel-info" is-open="true">
+                    <uib-accordion-heading>
+                        <i class="glyphicon glyphicon-file"></i>主要人员 | 法定代表人
+                    </uib-accordion-heading>
+
+                    <div ng-class="{true:'show',false:'hide'}[vm.memChange]" class="col-sm-12">
+                        <div>主要人员变更情况</div>
+                        <table class="table table-bordered table-edit little-gap">
+                            <thead>
+                            <tr class="info">
+                                <th class="text-center">序号</th>
+                                <th class="text-center">姓名</th>
+                                <th class="text-center">职务</th>
+                                <th class="text-center">证件类型</th>
+                                <th class="text-center">证件号码</th>
+                                <th class="text-center">委派方</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="main in vm.basicMemQueryList" ng-class="{true: 'active', false: ''}[main.modifysign >= 30]">
+                                <td class="text-center" ng-bind="$index | pageIndex:vm.basicMemQueryListPage.pageNo:vm.basicMemQueryListPage.pageSize"></td>
+                                <td class="text-center">
+                                    <span ng-if="main.modifysign == 2">编辑</span>
+                                    <span ng-if="main.modifysign == 1">新增</span>
+                                    <span ng-if="main.modifysign >= 30">删除</span>
+
+                                    <span ng-bind="main.name"></span>
+                                </td>
+                                <td class="text-center">
+                                    <span ng-bind="main.position[0].position | dict:'CB18'"></span>
+                                    <span ng-if="main.position[1].position">,</span>
+                                    <span ng-if="main.position[1].position" ng-bind="main.position[1].position | dict:'CB18'"></span>
+                                </td>
+                                <td class="text-center" ng-bind="main.certype | dict:'CB16'"></td>
+                                <td class="text-center" ng-bind="main.cerno"></td>
+                                <td class="text-center" ng-bind="main.delegate"></td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-warning btn-xs" ng-click="vm.memberDetails(main.personid)">详情</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!--分页-->
+                        <div ng-if=" vm.basicMemQueryListPage.pageSize < vm.basicMemQueryListPage.total " class="text-center" style="margin-top:10px;">
+                            <grid-paging page='vm.basicMemQueryListPage' change='vm.basicMemQueryListNum()'></grid-paging>
+                        </div>
+                    </div>
+
+                    <div ng-class="{true:'show',false:'hide'}[vm.lerepChange]" class="col-sm-12">
+                        <div>法定代表人变更情况</div>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr class="info">
+                                <th class="text-center col-sm-6">变更前</th>
+                                <th class="text-center col-sm-6">变更后</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="text-center" ng-bind="vm.basicLerepQueryForm.rsname"></td>
+                                <td class="text-center" ng-bind="vm.legalName.name"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 模块8 分公司变更情况-->
+                <div ng-class="{true:'show',false:'hide'}[vm.branchChange]" uib-accordion-group class="panel-info" is-open="true">
+                    <uib-accordion-heading>
+                        <i class="glyphicon glyphicon-file"></i>分公司变更情况
+                    </uib-accordion-heading>
+                    <div class="col-sm-12">
+                        <table class="table table-bordered table-edit little-gap">
+                            <thead>
+                            <tr class="info">
+                                <th class="text-center">序号</th>
+                                <th class="text-center">姓名</th>
+                                <th class="text-center">注册号</th>
+                                <th class="text-center" style="width:20%;">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="branch in vm.basicBranchQueryList" ng-class="{true: 'active', false: ''}[branch.modifysign >= 30]">
+                                <td class="text-center" ng-bind="$index | pageIndex:vm.basicBranchQueryListPage.pageNo:vm.basicBranchQueryListPage.pageSize"></td>
+                                <td class="text-center" >
+                                    <span ng-if="branch.modifysign == 2">编辑</span>
+                                    <span ng-if="branch.modifysign == 1">新增</span>
+                                    <span ng-if="branch.modifysign >= 30">删除</span>
+                                    <span ng-bind="branch.brname">删除</span>
+                                </td>
+                                <td class="text-center" ng-bind="branch.regno"></td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-warning btn-xs" ng-click="vm.brancOfficeDetails(branch.brid)">详情</button>
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td ng-if=" vm.basicBranchQueryList.length == 0" colspan="6" class="alert alert-warning" role="alert">
+                                    暂无数据
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!--分页-->
+                        <div ng-if=" vm.basicBranchQueryListPage.pageSize < vm.basicBranchQueryListPage.total" class="text-center" style="margin-top:10px;">
+                            <grid-paging page='vm.basicBranchQueryListPage' change='vm.basicBranchQueryListNum()'></grid-paging>
+                        </div>
+                    </div>
+                </div>
+            </uib-accordion>
+        </form>
+    </div>
+    <!-- end of main -->
+
+    <div class="text-center gap">
+        <button type="button" class="btn btn-success" ng-click="vm.opinion()">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 审批意见
+        </button>
+    </div>
+
+</div>
+<!-- end of main -->
+<script type="text/javascript" src="../../../../script/entry.js"></script>
+<script type="text/javascript">
+    loadJs('./cp-1100-change.js');
+</script>
+</body>
+</html>

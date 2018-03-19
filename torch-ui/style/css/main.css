@@ -1,0 +1,67 @@
+/* frame.html的样式 */
+.head.navbar-default{
+	background-color: #337ab7;
+    border-color: #e7e7e7;
+    min-height: 40px;
+    margin-bottom: 10px;
+}
+
+/* 右侧tab样式 */
+.tab-common-content{
+	border-style: solid;
+	border-width: 4px 1px 1px 1px;
+	border-color: #ddd;
+	border-top-color: #7ebee2;
+	padding: 10px;
+	border-radius: 0 0 2px 2px;
+	margin-bottom: 10px;
+}
+.non-active{
+	background:#FAFBFA;
+}
+.avisited{
+	background:#EFF0EF!important;
+}
+.active-frame{
+	background:#4490B8;
+	color:#fff;
+}
+
+.noactive-blue-del{
+	display:inline-block;
+	background-image:url('/app/style/image/del-blue.png');
+	width: 10px;
+	height: 10px;
+	cursor:pointer;
+}
+.noactive-blue-refresh{
+	display:inline-block;
+	background-image:url('/app/style/image/refresh-blue.png');
+	width: 10px;
+	height: 10px;
+	cursor:pointer;
+	margin: 0 4px;
+}
+.active-white-del{
+	display:inline-block;
+	background-image:url('/app/style/image/del-white.png');
+	width: 10px;
+	height: 10px;
+	cursor:pointer;
+}
+.active-white-refresh{
+	display:inline-block;
+	background-image:url('/app/style/image/refresh-white.png');
+	width: 10px;
+	height: 10px;
+	cursor:pointer;
+	margin: 0 4px;
+}
+
+
+.col-md-2>.list-group{
+	overflow:hidden;
+}
+
+
+

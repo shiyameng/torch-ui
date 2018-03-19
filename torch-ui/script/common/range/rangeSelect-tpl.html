@@ -1,0 +1,16 @@
+<div id="rangeBanner" name="rangeBanner" class=" range-banner">
+	<span class="range-padding-left">常用行业:</span> 
+	<span name="offen" style="padding:0 8px;font-family:Microsoft YaHei" ng-repeat="item in datas" ng-click="select($index)">
+		<span ng-class="{true:'btn-click'}[item.parentFlag]">{{item.text}}</span>
+	</span>
+	
+</div>
+<!-- 常用行业对应的行业范围 -->
+<div class="form-control range-margin-bottom">
+	<span class="form-static-control little-gap box-gray" name="littleBox" ng-class="{true:'box-green',false:'box-gray'}[sub.flag]"
+		  ng-repeat="sub in rangeChild.children" ng-click="choice($index)"> 
+		<i name="icon" ng-class="{false:'box-gray-icon',true:'box-green-icon'}[sub.flag]" ></i>
+		{{sub.text}} 
+		</span>
+</div>
+<textarea ng-model="value" class="form-control" rows="4"></textarea>

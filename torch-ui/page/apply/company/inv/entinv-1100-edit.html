@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge;chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv=pragma content=no-cache>
+<meta http-equiv=cache-control content=no-cache>
+<meta http-equiv=expires content=0>
+<link rel="stylesheet" href="../../../../style/css/approve/company/setup/setup.css"/>
+</head>
+<body>
+	<!-- begin of main -->
+	<div class="container-fluid" ng-controller="SetupController as vm">
+	<ng-form class="form-horizontal" name="entinvEdit">
+		<div class="form-group ">
+			<div class="col-sm-2 text-right">
+				<i class="red">*</i>
+				<label class="control-label" for="">单位名称：</label>
+			</div>
+			<div class="col-sm-4">
+				<input class="form-control" ng-model="vm.personForm.inv" ng-value="vm.personForm.inv" rule="must;character">
+			</div>
+		</div>
+		<!-- 民族和国籍  -->
+		<div class="form-group ">
+			<div class="col-sm-2 text-right">
+				<i class="red">*</i>
+				<label class="control-label" for="">证照类型：</label>
+			</div>
+			<div class="col-sm-3">
+				<p class="form-control-static" ng-bind="vm.personForm.blictype | dict:'CA50'"></p>
+			</div>
+			<div class="col-sm-2 text-right">
+				<i class="red">*</i>
+				<label class="control-label" for="">证照号码：</label>
+			</div>
+			<div class="col-sm-3">
+				<p class="form-control-static" ng-bind="vm.personForm.blicno"></p>
+			</div>
+		</div>
+		<!-- 户籍登记地址 -->
+		<div class="form-group ">
+			<div class="col-sm-2 text-right">
+				<i class="red">*</i>
+				<label class="control-label">户籍登记地址：</label>
+			</div>
+			<div class="col-sm-8">
+				<cascade city one="vm.personForm.domprov" two="vm.personForm.domcity" three="vm.personForm.domcounty"></cascade>
+			</div>
+			<div class="col-sm-8 col-sm-offset-2 little-gap">
+				<input class="form-control" type="text"  ng-model="vm.personForm.domother"  ng-value="vm.personForm.domother" rule="must;length:0,50">
+			</div>
+		</div>
+		</ng-form>
+		
+		<!-- 按钮组 -->
+		<div class="text-right">
+		  <button class="btn btn-primary btn-sm" ng-click="vm.addInfo()">
+		  	<span class="glyphicon glyphicon-plus"></span>添加
+		  </button>
+		</div>
+		
+		<!-- 表格 -->
+		<table name="invUpdate_Grid_2" class="table table-edit table-bordered table-striped small-gap">
+			<thead>
+				<tr>
+					<th style="width:30%;">出资额(万元)</th>
+					<th style="width:30%;">出资方式</th>
+					<th style="width:30%;">出资时间</th>
+					<th>删除</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="info in vm.capitalList">
+					<!-- 出资额 -->
+					<td>
+						<input class="form-control" ng-model="info.cursubconam" rule="must">
+					</td>
+					<!-- 出资方式 -->
+					<td>
+						<select class="form-control"  name="a" id="" torch-dict="CA22" ng-model="info.conform"   rule="must"></select>
+					</td>
+					<!-- 出资时间 -->
+					<td>
+						<form-date name="condate" date="info.condate"></form-date>
+					</td>
+					<!-- 操作 -->
+					<td>
+						<div id="del" class="btn btn-primary btn-sm" ng-click="vm.delInfo($index)">删除</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div>
+			<span>出资总额：<span ng-bind="vm.capitalList|sumOfItems:'cursubconam'"></span>万(币种：人民币)</span>
+			
+		</div>
+		<div class="top20">
+			<span>注意：如果股东是多种出资方式或者多次出资，请逐行填写，且所有股东出资总额需与注册资本一致。</span>
+		</div>
+		<!-- 保存按钮 -->
+		<div class="text-center gap">
+			<div class="btn btn-primary" ng-click="vm.saveInfo()">
+				<span class="glyphicon glyphicon-saved" aria-hidden="true"></span>保存
+			</div>
+		</div>
+	</div>
+	<!-- end of main -->
+
+	<script type="text/javascript" src="../../../../script/entry.js"></script>
+	<script type="text/javascript">
+		loadJs('./entinv-1100-edit.js');
+	</script>
+</body>
+</html>
